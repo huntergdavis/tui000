@@ -13,6 +13,28 @@ class Tui000(App):
     # Static variable to reference the options screen
     debug = None
 
+    # current character name
+    name = "Toast"
+    profession = "Executive"
+    age = 18
+    life_focus = "Survival"
+
+    # structure to hold 50 weekends per year and 60 years of life after 18
+    # initialize all values to single character 'X" to represent unvisited
+    # structure is a 2D array of 50x60
+    life_map = [['X' for i in range(60)] for j in range(50)]
+
+    # Function for generating the life_map string based on the character's life_map
+    # The actual map will be represented by a 22x26 box of characters
+    # Each character is separated by a space for better readability
+    def generate_life_map(self) -> str:
+        life_map_str = ""
+        for i in range(50):
+            for j in range(60):
+                life_map_str += self.life_map[i][j] + " "
+            life_map_str += "\n"
+        return life_map_str
+
     # Function for generating the headshot in the corner (9x9 box)
     def generate_headshot(self) -> str:
         return "\n".join([
@@ -35,10 +57,13 @@ class Tui000(App):
             sys.exit(1)
 
         # Create the 9x9 square box with the headshot
+        # Add the headshot to the view
         box = Static(self.generate_headshot())
-
-        # Add the box to the view
         await self.view.dock(box, edge="top", size=10)  # 9x9 box plus 1 space
+
+        # create the life_map on the right side fo the screen
+        life_map = Static(self.generate_life_map())
+        await self.view.dock(life_map, edge="right", size=26)
 
         # Create the menu row with highlighted letters
         menu_content = "([b]S[/b]ave) ([b]L[/b]oad) ([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]Q[/b]uit)"
