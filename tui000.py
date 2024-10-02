@@ -13,6 +13,16 @@ class Tui000(App):
     # Static variable to reference the options screen
     debug = None
 
+    # Function for generating the headshot in the corner (9x9 box)
+    def generate_headshot(self) -> str:
+        return "\n".join([
+            "  .   .  ",
+            "   \\ /   ",
+            "    X    ",
+            "   / \\   ",
+            "  '   '  ",
+        ])
+
     async def on_mount(self) -> None:
         # Get the terminal size
         terminal_size = shutil.get_terminal_size((80, 24))
@@ -24,9 +34,8 @@ class Tui000(App):
             await asyncio.sleep(1)  # Wait for one second before exiting
             sys.exit(1)
 
-        # Create the 9x9 square box
-        box_content = "\n".join(["#" * 9 for _ in range(9)])
-        box = Static(box_content)
+        # Create the 9x9 square box with the headshot
+        box = Static(self.generate_headshot())
 
         # Add the box to the view
         await self.view.dock(box, edge="top", size=10)  # 9x9 box plus 1 space
