@@ -9,7 +9,7 @@ def life_map_display(life_map) -> str:
     # Each row in the grid will contain 10 blocks, displayed with spaces to fill 22 characters
     # We need to condense 50 rows x 60 columns into 12x10 blocks
     blocks_per_row = 10
-    total_rows = 12
+    total_rows = 24
 
     # Each block represents ~25 weekends (25 = 50x60 / 120)
     for i in range(total_rows):  # 12 rows in the final grid

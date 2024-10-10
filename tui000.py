@@ -64,7 +64,7 @@ class Tui000(App):
         await self.view.dock(self.event_log, edge="bottom", size=5)  # Height of 5 lines
 
         # Create an instance of the QuestionBox
-        await self.view.dock(self.question_box, edge="top", size=15)
+        await self.view.dock(self.question_box, edge="top", size=14)
 
         # Display the question
         await self.question_box.display_question(self.question, self.choices)
