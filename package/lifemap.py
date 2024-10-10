@@ -2,7 +2,7 @@ from statistics import mode
 
 # Function for generating the life_map string based on the character's life_map
 # Each character represents a block of weekends, displayed in a 12x10 grid with padding.
-def generate_life_map(life_map) -> str:
+def life_map_display(life_map) -> str:
     # Initialize the life_map string
     life_map_str = ""
 
