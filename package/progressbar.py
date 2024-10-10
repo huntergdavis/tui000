@@ -13,7 +13,7 @@ class ProgressBar(Widget):
         Generate a cyan bar of 50 characters long and 3 characters high.
         Fill based on the provided percentage (0-100).
         """
-        bar_length = 50
+        bar_length = 39
         fill_length = int((percentage / 100) * bar_length)
         
         filled_part = "█" * fill_length  # Use '█' for filled portion

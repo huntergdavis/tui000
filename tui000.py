@@ -9,10 +9,11 @@ from textual.reactive import Reactive
 
 from rich.text import Text
 
-from package.headshot import generate_headshot
+from package.headshot import generate_headshot_and_bio
 from package.lifemap import life_map_display
 from package.progressbar import ProgressBar
 from package.eventlog import EventLog
+from package.questionbox import QuestionBox
 
 class Tui000(App):
     
@@ -28,6 +29,13 @@ class Tui000(App):
     age = 18
     life_focus = "Survival"
 
+    # Initialize the question box
+    question_box = QuestionBox()
+    
+    question = "You walk into a car dealership. The dealer is friendly, and you enjoy the experience. Which color car do you choose?"
+    choices = [('a', 'Red'), ('b', 'Green'), ('c', 'Blue'), ('d', 'Yellow')]
+
+
     # structure to hold 50 weekends per year and 60 years of life after 18
     # initialize all values to single character 'X" to represent unvisited
     # structure is a 2D array of 50x60
@@ -35,15 +43,15 @@ class Tui000(App):
 
     async def on_mount(self) -> None:
         # Create the 9x9 square box with the headshot
-        box = Static(generate_headshot())
-        await self.view.dock(box, edge="left", size=10)
+        box = Static(generate_headshot_and_bio(self.name,self.profession,self.age,self.life_focus))
+        await self.view.dock(box, edge="left", size=19)
 
         # Create the life_map on the upper right side of the screen
         life_map = Static(life_map_display(life_map=self.life_map))
         await self.view.dock(life_map, edge="right", size=20)  # Adjusted size for better fit
 
         # Create the menu row and dock it at the bottom
-        menu_content = "([b]S[/b]ave) ([b]L[/b]oad) ([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]Q[/b]uit)"
+        menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]Q[/b]uit)"
         menu = Static(menu_content)
         await self.view.dock(menu, edge="bottom", size=1)
 
@@ -55,6 +63,12 @@ class Tui000(App):
         self.event_log = EventLog()
         await self.view.dock(self.event_log, edge="bottom", size=5)  # Height of 5 lines
 
+        # Create an instance of the QuestionBox
+        await self.view.dock(self.question_box, edge="top", size=15)
+
+        # Display the question
+        await self.question_box.display_question(self.question, self.choices)
+
         # Initialize the debug screen as a Static widget
         Tui000.debug = Static("")  # Start with empty content
         await self.view.dock(Tui000.debug, edge="top", size=1)
@@ -62,7 +76,6 @@ class Tui000(App):
         # Add some initial log entries
         await self.event_log.add_entry("App started.")
         await self.event_log.add_entry("Waiting for user input...")
-
 
     # Function for when the options key is pressed
     async def action_debug(self) -> None:
@@ -79,8 +92,10 @@ class Tui000(App):
             Tui000.debug_open = False
 
     async def on_key(self, event: Key) -> None:
+        await self.question_box.on_key(event)  # Handle key events for the question box
         # Add new log entry for each key pressed
         await self.event_log.add_entry(f"Key '{event.key}' pressed.")
+        await self.event_log.scroll_down()
 
         # Exit the program when 'q' is pressed
         if event.key.lower() == "q":  # Check for lowercase 'q'
@@ -88,12 +103,17 @@ class Tui000(App):
         # Show or hide the debug screen after pressing the options 'o' key
         elif event.key.lower() == "o":
             await self.action_debug()
+            # Display the question
+            await self.question_box.display_question(self.question, self.choices)
+
 
         # Scroll up or down using arrow keys
         if event.key == "up":
-            await self.event_log.scroll_up()
+            for i in range(5):
+                await self.event_log.scroll_up()
         elif event.key == "down":
-            await self.event_log.scroll_down()
+            for i in range(5):
+                await self.event_log.scroll_down()
 
     async def on_ready(self) -> None:
         print("App is ready. Press 'q' to quit.")
