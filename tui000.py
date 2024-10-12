@@ -15,6 +15,7 @@ from package.progressbar import ProgressBar
 from package.eventlog import EventLog
 from package.questionbox import QuestionBox
 from package.bio import Bio
+from package.lifequestions import LifeEventQuestions
 
 class Tui000(App):
     
@@ -24,19 +25,22 @@ class Tui000(App):
     # Static variable to reference the options screen
     debug = None
 
-    # Initialize the question box
-    question_box = QuestionBox()
-    
-    question = "You walk into a car dealership. The dealer is friendly, and you enjoy the experience. Which color car do you choose?"
-    choices = [('a', 'Red'), ('b', 'Green'), ('c', 'Blue'), ('d', 'Yellow')]
-
 
     # structure to hold 50 weekends per year and 60 years of life after 18
     # initialize all values to single character 'X" to represent unvisited
     # structure is a 2D array of 50x60
     life_map = [['X' for i in range(60)] for j in range(50)]
 
-    async def on_mount(self) -> None:
+    async def refreshQuestions(self):
+        questionandanswers = LifeEventQuestions.get_random_question()
+        self.question = questionandanswers['question']
+        self.choices = questionandanswers['choices']
+        await self.question_box.display_question(self.question, self.choices)
+
+    async def main_screen(self) -> None:
+
+        # Initialize the question box
+        self.question_box = QuestionBox()
 
         #  pull name, profession, age, and life focus from bio.py
         self.name = Bio.generate_name(self)
@@ -69,7 +73,9 @@ class Tui000(App):
         await self.view.dock(self.question_box, edge="top", size=14)
 
         # Display the question
-        await self.question_box.display_question(self.question, self.choices)
+        await self.refreshQuestions()
+
+        self.set_interval(10, self.refreshQuestions)  # Schedule refresh every 10 second
 
         # Initialize the debug screen as a Static widget
         Tui000.debug = Static("")  # Start with empty content
@@ -81,6 +87,10 @@ class Tui000(App):
 
         # start the progress bar
         await self.progress_bar.start()
+
+    async def on_mount(self) -> None:
+        await self.main_screen()
+
 
     # Function for when the options key is pressed
     async def action_debug(self) -> None:
@@ -108,8 +118,9 @@ class Tui000(App):
         # Show or hide the debug screen after pressing the options 'o' key
         elif event.key.lower() == "o":
             await self.action_debug()
-            # Display the question
-            await self.question_box.display_question(self.question, self.choices)
+
+            # Refresh the question box with a new question
+            await self.refreshQuestions()
 
 
         # Scroll up or down using arrow keys
