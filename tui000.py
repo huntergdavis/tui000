@@ -14,6 +14,7 @@ from package.lifemap import life_map_display
 from package.progressbar import ProgressBar
 from package.eventlog import EventLog
 from package.questionbox import QuestionBox
+from package.bio import Bio
 
 class Tui000(App):
     
@@ -22,12 +23,6 @@ class Tui000(App):
 
     # Static variable to reference the options screen
     debug = None
-
-    # current character name
-    name = "Toast"
-    profession = "Executive"
-    age = 18
-    life_focus = "Survival"
 
     # Initialize the question box
     question_box = QuestionBox()
@@ -42,6 +37,13 @@ class Tui000(App):
     life_map = [['X' for i in range(60)] for j in range(50)]
 
     async def on_mount(self) -> None:
+
+        #  pull name, profession, age, and life focus from bio.py
+        self.name = Bio.generate_name(self)
+        self.profession = Bio.generate_profession(self)
+        self.age = Bio.generate_age(self)
+        self.life_focus = Bio.generate_life_focus(self)
+
         # Create the 9x9 square box with the headshot
         box = Static(generate_headshot_and_bio(self.name,self.profession,self.age,self.life_focus))
         await self.view.dock(box, edge="left", size=19)
@@ -56,7 +58,7 @@ class Tui000(App):
         await self.view.dock(menu, edge="bottom", size=1)
 
         # Create the progress bar widget and dock it just above the menu
-        self.progress_bar = ProgressBar(percentage=100)
+        self.progress_bar = ProgressBar()
         await self.view.dock(self.progress_bar, edge="bottom", size=3)
 
         # Create the event log widget and dock it in the bottom space
@@ -76,6 +78,9 @@ class Tui000(App):
         # Add some initial log entries
         await self.event_log.add_entry("App started.")
         await self.event_log.add_entry("Waiting for user input...")
+
+        # start the progress bar
+        await self.progress_bar.start()
 
     # Function for when the options key is pressed
     async def action_debug(self) -> None:
