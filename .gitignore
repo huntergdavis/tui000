@@ -4,5 +4,5 @@ textual.log
 
 .DS_Store
 Jds_Notes.txt
-tui000-original.py
 tui000b.py
+tui000-noCSS.py
