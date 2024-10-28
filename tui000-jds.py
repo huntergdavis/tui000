@@ -1,7 +1,16 @@
-# This version works for Jds on his machine
-# 2024-10-28
+###############################################################################
+# This version works for Jds on his machine.
+# Worked with Claude Sonnete to get it working
 #
-
+# Most changes were made in how it works with textual
+# (which was throwing tons of errors for me about setters and attributes).
+#
+# Also changed how the app was called at the very bottom, which seems to now 
+# be in the format the textual prefers.
+# 
+# 2024-10-28
+# Jds
+###############################################################################
 
 import shutil
 import sys
