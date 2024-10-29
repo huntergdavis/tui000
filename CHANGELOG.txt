@@ -6,6 +6,7 @@ CHANGELOG
 
 ----------------------------------------------------------------------------------------
 NEXT
+   * Figure out what "Graveyard" is supposed to do
    * Revert from CSS-style to Hunter's original style   
 
 ----------------------------------------------------------------------------------------
