@@ -27,3 +27,7 @@ NEXT
         * Error --> TypeError: object NoneType can't be used in 'await' expression
         * Solved the error (mostly) by removing the two "await" commands in action_debug
    * Slowed down the questions by changing set_interval from 10 to 12
+   * Gave up on making a noCSS version as textual seems to prefer CSS (maybe there's a 
+     way that I just don't know.
+   * Reverted the speed back to 10.
+

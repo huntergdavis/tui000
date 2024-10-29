@@ -89,7 +89,7 @@ class Tui000(App):
         await self.progress_bar.start()
 
         # Set up question refresh interval
-        self.set_interval(12, self.refreshQuestions)
+        self.set_interval(10, self.refreshQuestions)
 
     # Function for when the options key is pressed
     async def action_debug(self) -> None:
