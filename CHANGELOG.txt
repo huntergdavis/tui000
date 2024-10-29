@@ -22,8 +22,8 @@ NEXT
 
 2024-10-29
    * Somehow accidentally UNDID some of the changes I made yesterday causing it to break.
-        * Managed to restore the proper versions of tui000b.py and progressbar.py that work.
-   * Discovered an error when I pressed O for Options:
-        TypeError: object NoneType can't be used in 'await' expression
-   * Solved the error (mostly) by removing the two "await" commands in action_debug
+        * Managed to restore the proper versions of tui000.py and progressbar.py that work.
+   * Discovered an error when I pressed "O" for Options:
+        * Error --> TypeError: object NoneType can't be used in 'await' expression
+        * Solved the error (mostly) by removing the two "await" commands in action_debug
    * Slowed down the questions by changing set_interval from 10 to 12
