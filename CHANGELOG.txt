@@ -1,0 +1,28 @@
+-----------
+CHANGELOG
+-----------
+
+
+
+----------------------------------------------------------------------------------------
+NEXT
+   * Revert from CSS-style to Hunter's original style   
+
+----------------------------------------------------------------------------------------
+
+
+
+2024-10-28
+   * Got Claude Sonnet's help to change the program to run on my machine.
+        * Mostly changes to how it uses textual. Fixes setter and attribute errors.
+        * Changed how the main program is called at the end, to align with 
+          textual conventions
+
+
+2024-10-29
+   * Somehow accidentally UNDID some of the changes I made yesterday causing it to break.
+        * Managed to restore the proper versions of tui000b.py and progressbar.py that work.
+   * Discovered an error when I pressed O for Options:
+        TypeError: object NoneType can't be used in 'await' expression
+   * Solved the error (mostly) by removing the two "await" commands in action_debug
+   * Slowed down the questions by changing set_interval from 10 to 12
