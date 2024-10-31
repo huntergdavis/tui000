@@ -1,113 +1,133 @@
-import random
+from textual.widget import Widget
+from textual.reactive import reactive
 from rich.text import Text
+import random
 
-# Function to center-align a string within a fixed width (18 characters)
-def center_text(text: str, width: int = 18) -> str:
-    return text.center(width)
+class Headshot(Widget):
+    character_name = reactive("")
+    profession = reactive("")
+    age = reactive(0)
+    focus = reactive("")
+    face_text = reactive(Text())
+    face_size: int = 18  # Renamed from 'size' to 'face_size'
 
-# Function to create a blank 18x18 grid
-def initialize_grid(size: int = 18) -> list:
-    return [[" " for _ in range(size)] for _ in range(size)]
+    def __init__(self, name, profession, age, focus, **kwargs):
+        super().__init__(**kwargs)
+        self.character_name = name
+        self.profession = profession
+        self.age = age
+        self.focus = focus
+        self.face_text = Text()
+        self.generate_headshot_and_bio()
 
-# Function to add an outline to the grid
-def add_outline(grid: list) -> None:
-    for i in range(18):
-        grid[i][0] = "|"
-        grid[i][17] = "|"
-    for j in range(18):
-        grid[0][j] = "-"
-        grid[17][j] = "-"
+    def generate_headshot_and_bio(self) -> None:
+        # Initialize the grid
+        headshot = self.initialize_grid()
 
-# Function to generate facial features in the grid
-def generate_facial_features(grid: list) -> tuple:
-    colors = ["cyan", "light_blue", "green", "magenta", "yellow", "light_green"]
+        # Randomly decide if we're using a background color or an outline
+        use_background = random.choice([True, False])
 
-    # Characters to represent different parts of the face
-    eyes = ["O", "@", "*", "o"]
-    mouth = ["-", "=", "~"]
-    nose = ["|", "^", "v"]
-    face_fill = [".", " "]
+        if not use_background:
+            self.add_outline(headshot)  # Add outline if no background is used
 
-    # Generate random features
-    eye_char = random.choice(eyes)
-    eye_color = random.choice(colors)
-    nose_char = random.choice(nose)
-    nose_color = random.choice(colors)
-    mouth_char = random.choice(mouth)
-    mouth_color = random.choice(colors)
-    face_fill_char = random.choice(face_fill)
-    face_color = random.choice(colors)
+        # Generate facial features and place them in the grid
+        (eye_char, eye_color, nose_char, nose_color, mouth_char, mouth_color,
+         face_fill_char, face_color) = self.generate_facial_features(headshot)
 
-    # Place eyes, nose, and mouth in the grid
-    grid[4][5] = eye_char
-    grid[4][12] = eye_char
-    grid[9][8] = nose_char
-    grid[9][9] = nose_char
-    for i in range(6, 12):
-        grid[14][i] = mouth_char
+        # Optionally use a background color
+        bg_color = random.choice(
+            ["on_black", "on_white", "on_grey19", "on_cornsilk1", "on_dark_blue"]
+        ) if use_background else ""
 
-    return (eye_char, eye_color, nose_char, nose_color, mouth_char, mouth_color, face_fill_char, face_color)
+        # Fill the face with the background pattern
+        self.fill_face(headshot, face_fill_char)
 
-# Function to fill the grid with face background characters
-def fill_face(grid: list, face_fill_char: str) -> None:
-    for i in range(18):
-        for j in range(18):
-            if grid[i][j] == " ":
-                grid[i][j] = face_fill_char
+        # Convert the grid to rich text with coloring
+        self.face_text = self.grid_to_rich_text(
+            headshot, eye_char, eye_color, nose_char, nose_color,
+            mouth_char, mouth_color, face_fill_char, face_color, bg_color
+        )
 
-# Function to convert the grid to a Rich Text object with colors
-def grid_to_rich_text(grid: list, eye_char: str, eye_color: str, nose_char: str, nose_color: str, 
-                      mouth_char: str, mouth_color: str, face_fill_char: str, face_color: str, 
-                      bg_color: str) -> Text:
-    face_text = Text()
-    for i in range(18):
-        for j in range(18):
-            char = grid[i][j]
-            if char == eye_char:
-                face_text.append(char, style=f"{eye_color} {bg_color}")
-            elif char == nose_char:
-                face_text.append(char, style=f"{nose_color} {bg_color}")
-            elif char == mouth_char:
-                face_text.append(char, style=f"{mouth_color} {bg_color}")
-            elif char in ["-", "|"]:  # Border chars
-                face_text.append(char, style="grey58")  # Outline in a neutral color
-            else:
-                face_text.append(char, style=f"{face_color} {bg_color}")
-        face_text.append("\n")
-    return face_text
+        # Append bio information below the face
+        self.generate_bio(self.face_text)
 
-# Function to generate and append the bio information
-def generate_bio(name: str, profession: str, age: int, focus: str, face_text: Text) -> None:
-    face_text.append(f"\n{center_text(name)}\n", style="bold")
-    face_text.append(f"{center_text(profession)}\n", style="italic")
-    face_text.append(f"{center_text(f'{age} years old')}\n")
-    face_text.append(f"{center_text(focus)}\n", style="bold italic")
+    def render(self) -> Text:
+        """Render the headshot and bio."""
+        return self.face_text
 
-# Main function to generate headshot and bio
-def generate_headshot_and_bio(name: str, profession: str, age: int, focus: str) -> Text:
-    # Initialize the grid
-    headshot = initialize_grid()
+    def initialize_grid(self) -> list:
+        return [[" " for _ in range(self.face_size)] for _ in range(self.face_size)]
 
-    # Randomly decide if we're using a background color or an outline
-    use_background = random.choice([True, False])
+    def add_outline(self, grid: list) -> None:
+        for i in range(self.face_size):
+            grid[i][0] = "|"
+            grid[i][self.face_size - 1] = "|"
+        for j in range(self.face_size):
+            grid[0][j] = "-"
+            grid[self.face_size - 1][j] = "-"
 
-    if not use_background:
-        add_outline(headshot)  # Add outline if no background is used
+    def generate_facial_features(self, grid: list) -> tuple:
+        colors = ["cyan", "light_blue", "green", "magenta", "yellow", "light_green"]
 
-    # Generate facial features and place them in the grid
-    (eye_char, eye_color, nose_char, nose_color, mouth_char, mouth_color, face_fill_char, face_color) = generate_facial_features(headshot)
+        # Characters to represent different parts of the face
+        eyes = ["O", "@", "*", "o"]
+        mouth = ["-", "=", "~"]
+        nose = ["|", "^", "v"]
+        face_fill = [".", " "]
 
-    # Optionally use a background color
-    bg_color = random.choice(["on_black", "on_white", "on_grey19", "on_cornsilk1", "on_dark_blue"]) if use_background else ""
+        # Generate random features
+        eye_char = random.choice(eyes)
+        eye_color = random.choice(colors)
+        nose_char = random.choice(nose)
+        nose_color = random.choice(colors)
+        mouth_char = random.choice(mouth)
+        mouth_color = random.choice(colors)
+        face_fill_char = random.choice(face_fill)
+        face_color = random.choice(colors)
 
-    # Fill the face with the background pattern
-    fill_face(headshot, face_fill_char)
+        # Place eyes, nose, and mouth in the grid
+        grid[4][5] = eye_char
+        grid[4][12] = eye_char
+        grid[9][8] = nose_char
+        grid[9][9] = nose_char
+        for i in range(6, 12):
+            grid[14][i] = mouth_char
 
-    # Convert the grid to rich text with coloring
-    face_text = grid_to_rich_text(headshot, eye_char, eye_color, nose_char, nose_color, 
-                                  mouth_char, mouth_color, face_fill_char, face_color, bg_color)
+        return (eye_char, eye_color, nose_char, nose_color,
+                mouth_char, mouth_color, face_fill_char, face_color)
 
-    # Append bio information below the face
-    generate_bio(name, profession, age, focus, face_text)
+    def fill_face(self, grid: list, face_fill_char: str) -> None:
+        for i in range(self.face_size):
+            for j in range(self.face_size):
+                if grid[i][j] == " ":
+                    grid[i][j] = face_fill_char
 
-    return face_text
+    def grid_to_rich_text(self, grid: list, eye_char: str, eye_color: str,
+                          nose_char: str, nose_color: str, mouth_char: str,
+                          mouth_color: str, face_fill_char: str, face_color: str,
+                          bg_color: str) -> Text:
+        face_text = Text()
+        for i in range(self.face_size):
+            for j in range(self.face_size):
+                char = grid[i][j]
+                if char == eye_char:
+                    face_text.append(char, style=f"{eye_color} {bg_color}")
+                elif char == nose_char:
+                    face_text.append(char, style=f"{nose_color} {bg_color}")
+                elif char == mouth_char:
+                    face_text.append(char, style=f"{mouth_color} {bg_color}")
+                elif char in ["-", "|"]:  # Border chars
+                    face_text.append(char, style="grey58")  # Outline in a neutral color
+                else:
+                    face_text.append(char, style=f"{face_color} {bg_color}")
+            face_text.append("\n")
+        return face_text
+
+    def center_text(self, text: str, width: int = 18) -> str:
+        return text.center(width)
+
+    def generate_bio(self, face_text: Text) -> None:
+        face_text.append(f"\n{self.center_text(self.character_name)}\n", style="bold")
+        face_text.append(f"{self.center_text(self.profession)}\n", style="italic")
+        face_text.append(f"{self.center_text(f'{self.age} years old')}\n")
+        face_text.append(f"{self.center_text(self.focus)}\n", style="bold italic")
