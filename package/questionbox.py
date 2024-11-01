@@ -1,15 +1,18 @@
 from textual.widget import Widget
-from textual.reactive import Reactive
+from textual.reactive import reactive
+from textual.events import Key
+
 from rich.text import Text
 
+
 class QuestionBox(Widget):
-    question: Reactive[str] = Reactive("")
-    choices: Reactive[list] = Reactive([])
-    selected_choice: Reactive[str] = Reactive("")  # Store the selected choice
+    question = reactive("")
+    choices = reactive([])
+    selected_choice = reactive("")  # Store the selected choice
     max_line_length: int = 36  # Maximum line length for the box
 
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
 
     async def display_question(self, question: str, choices: list) -> None:
         """Display a multiple-choice question with choices."""
@@ -25,7 +28,7 @@ class QuestionBox(Widget):
         self.selected_choice = ""
         self.refresh()  # Refresh to clear the box
 
-    async def on_key(self, event) -> None:
+    async def on_key(self, event: Key) -> None:
         """Handle key events for user input."""
         if event.key in [choice[0].lower() for choice in self.choices]:
             self.selected_choice = event.key

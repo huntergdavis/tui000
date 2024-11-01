@@ -31,3 +31,11 @@ NEXT
      way that I just don't know.
    * Reverted the speed back to 10.
 
+
+2024-11-01
+   * Refreshed my tinkering branch with Hunter's latest version which is now updated
+     to a newer version of textual (and fixes all my initial problems).
+   * This update to main is cleaner than my experimental fixes. I'm a little bummed
+     I did all the work only to have Hunter do a better job at it, but I can at least 
+     say it was a learning experience! That's what learning's all about!
+
