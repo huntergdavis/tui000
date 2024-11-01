@@ -23,15 +23,7 @@ class Tui000(App):
         layout: vertical;
     }
 
-    #top_container {
-        height: auto;
-    }
-
     #middle_container {
-        height: auto;
-    }
-
-    #bottom_container {
         height: auto;
     }
 
@@ -43,11 +35,6 @@ class Tui000(App):
         width: 20;
     }
 
-    #debug_widget {
-        width: 100%;
-        height: 1;
-    }
-
     #menu {
         height: 1;
     }
@@ -57,7 +44,7 @@ class Tui000(App):
     }
 
     #event_log {
-        height: 5;
+        height: 6;
     }
 
     #question_box {
@@ -68,12 +55,10 @@ class Tui000(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Initialize variables
-        self.debug_open = False
         self.life_map = [['X' for _ in range(60)] for _ in range(50)]
         self.question_box = QuestionBox(id="question_box")
         self.progress_bar = ProgressBar(id="progress_bar")
         self.event_log = EventLog(id="event_log")
-        self.debug_widget = Static("", id="debug_widget")
 
         # Generate bio data using static methods
         self.character_name = Bio.generate_name()
@@ -98,23 +83,20 @@ class Tui000(App):
         self.menu = Static(menu_content, id="menu")
 
     def compose(self) -> ComposeResult:
-        # Top container with debug widget
-        with Vertical(id="top_container"):
-            yield self.debug_widget
-            # Middle container with headshot, question box, and life map
-            with Horizontal(id="middle_container"):
-                # Left container with headshot
-                with Vertical(id="left_container"):
-                    yield self.headshot_widget
-                # Center container with question box
-                with Vertical():
-                    yield self.question_box
-                    yield self.event_log
-                    yield self.progress_bar
-                    yield self.menu
-                # Right container with life map
-                with Vertical(id="right_container"):
-                    yield self.life_map_widget
+        # Middle container with headshot, question box, and life map
+        with Horizontal(id="middle_container"):
+            # Left container with headshot
+            with Vertical(id="left_container"):
+                yield self.headshot_widget
+            # Center container with question box
+            with Vertical():
+                yield self.question_box
+                yield self.event_log
+                yield self.progress_bar
+                yield self.menu
+            # Right container with life map
+            with Vertical(id="right_container"):
+                yield self.life_map_widget
 
     async def on_mount(self) -> None:
         # Perform any additional setup here
@@ -132,17 +114,12 @@ class Tui000(App):
         await self.question_box.display_question(self.question, self.choices)
 
     async def action_debug(self) -> None:
-        if not self.debug_open:
-            # Show the debug information
-            terminal_size = shutil.get_terminal_size((80, 24))
-            width, height = terminal_size.columns, terminal_size.lines
-            debug_content = f"Terminal size: {width}x{height}"
-            self.debug_widget.update(debug_content)
-            self.debug_open = True
-        else:
-            # Hide the debug view
-            self.debug_widget.update("")  # Clear the content
-            self.debug_open = False
+        # Add debug information to event log
+        terminal_size = shutil.get_terminal_size((80, 24))
+        width, height = terminal_size.columns, terminal_size.lines
+        debug_content = f"Terminal size: {width}x{height}"
+        self.event_log.add_entry(debug_content)
+        self.event_log.scroll_down()
 
     async def on_key(self, event: Key) -> None:
         await self.question_box.on_key(event)  # Assuming this is async
@@ -154,7 +131,7 @@ class Tui000(App):
         # Exit the program when 'q' is pressed
         if event.key.lower() == "q":
             self.exit()  # Use Textual's built-in exit method
-        # Show or hide the debug screen after pressing the options 'o' key
+        # Show debug information after pressing the options 'o' key
         elif event.key.lower() == "o":
             await self.action_debug()
 
