@@ -1,0 +1,31 @@
+Screen {
+    layout: vertical;
+}
+
+#middle_container {
+    height: auto;
+}
+
+#left_container {
+    width: 19;
+}
+
+#right_container {
+    width: 20;
+}
+
+#menu {
+    height: 1;
+}
+
+#progress_bar {
+    height: 3;
+}
+
+#event_log {
+    height: 6;
+}
+
+#question_box {
+    height: 14;
+}

@@ -1,6 +1,12 @@
 import random
 
 class Bio:
+    def __init__(self):
+        self.name = self.generate_name()
+        self.profession = self.generate_profession()
+        self.age = self.generate_age()
+        self.life_focus = self.generate_life_focus()
+
     @staticmethod
     def generate_name():
         first_names = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Helen"]

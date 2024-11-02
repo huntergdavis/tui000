@@ -1,14 +1,15 @@
+import os
 import shutil
 import sys
 import asyncio
 
 from textual.app import App, ComposeResult
-from textual.containers import Container, Vertical, Horizontal
+from textual.containers import Vertical, Horizontal
 from textual.widgets import Static
 from textual.events import Key
 
-from package.headshot import Headshot  # Updated to use the Headshot widget
-from package.lifemap import LifeMap    # Updated to use the LifeMap widget
+from package.headshot import Headshot
+from package.lifemap import LifeMap
 from package.progressbar import ProgressBar
 from package.eventlog import EventLog
 from package.questionbox import QuestionBox
@@ -18,69 +19,37 @@ from package.lifequestions import LifeEventQuestions
 
 class Tui000(App):
 
-    CSS = """
-    Screen {
-        layout: vertical;
-    }
-
-    #middle_container {
-        height: auto;
-    }
-
-    #left_container {
-        width: 19;
-    }
-
-    #right_container {
-        width: 20;
-    }
-
-    #menu {
-        height: 1;
-    }
-
-    #progress_bar {
-        height: 3;
-    }
-
-    #event_log {
-        height: 6;
-    }
-
-    #question_box {
-        height: 14;
-    }
-    """
+    # Set the CSS_PATH to the CSS file in the package directory
+    CSS_PATH = os.path.join("package", "tui000.css")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # Initialize variables
-        self.life_map = [['X' for _ in range(60)] for _ in range(50)]
+        # Initialize widgets
         self.question_box = QuestionBox(id="question_box")
         self.progress_bar = ProgressBar(id="progress_bar")
         self.event_log = EventLog(id="event_log")
 
-        # Generate bio data using static methods
-        self.character_name = Bio.generate_name()
-        self.profession = Bio.generate_profession()
-        self.age = Bio.generate_age()
-        self.life_focus = Bio.generate_life_focus()
+        # Create an instance of Bio to hold character data
+        self.bio = Bio()
 
-        # Create widgets that depend on generated data
+        # Create the LifeMap widget
+        self.life_map_widget = LifeMap(id="life_map_widget")
+
+        # Create the Headshot widget using data from Bio
         self.headshot_widget = Headshot(
-            name=self.character_name,
-            profession=self.profession,
-            age=self.age,
-            focus=self.life_focus,
+            name=self.bio.name,
+            profession=self.bio.profession,
+            age=self.bio.age,
+            focus=self.bio.life_focus,
             id="headshot_widget"
         )
 
-        # Create life map widget
-        self.life_map_widget = LifeMap(life_map_data=self.life_map, id="life_map_widget")
-
-        # Create menu
+        # Create the menu
         menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]Q[/b]uit)"
         self.menu = Static(menu_content, id="menu")
+
+    # Rest of your code remains the same...
+
 
     def compose(self) -> ComposeResult:
         # Middle container with headshot, question box, and life map
@@ -88,7 +57,7 @@ class Tui000(App):
             # Left container with headshot
             with Vertical(id="left_container"):
                 yield self.headshot_widget
-            # Center container with question box
+            # Center container with question box and other widgets
             with Vertical():
                 yield self.question_box
                 yield self.event_log
@@ -99,22 +68,23 @@ class Tui000(App):
                 yield self.life_map_widget
 
     async def on_mount(self) -> None:
-        # Perform any additional setup here
+        # Initial setup
         await self.refreshQuestions()
-        self.set_interval(10, self.refreshQuestions)  # Schedule refresh every 10 seconds
+        self.set_interval(10, self.refreshQuestions)  # Refresh questions every 10 seconds
         self.event_log.add_entry("App started.")
+        self.event_log.add_entry(f"Welcome, {self.bio.name}!")
         self.event_log.add_entry("Waiting for user input...")
         # Start the progress bar
         await self.progress_bar.start()
 
     async def refreshQuestions(self):
-        questionandanswers = LifeEventQuestions.get_random_question()
-        self.question = questionandanswers['question']
-        self.choices = questionandanswers['choices']
+        question_and_answers = LifeEventQuestions.get_random_question()
+        self.question = question_and_answers['question']
+        self.choices = question_and_answers['choices']
         await self.question_box.display_question(self.question, self.choices)
 
     async def action_debug(self) -> None:
-        # Add debug information to event log
+        # Add debug information to the event log
         terminal_size = shutil.get_terminal_size((80, 24))
         width, height = terminal_size.columns, terminal_size.lines
         debug_content = f"Terminal size: {width}x{height}"
@@ -122,24 +92,19 @@ class Tui000(App):
         self.event_log.scroll_down()
 
     async def on_key(self, event: Key) -> None:
-        await self.question_box.on_key(event)  # Assuming this is async
+        await self.question_box.on_key(event)  # Handle key events in the question box
 
-        # Add new log entry for each key pressed
+        # Log the key press
         self.event_log.add_entry(f"Key '{event.key}' pressed.")
         self.event_log.scroll_down()
 
-        # Exit the program when 'q' is pressed
+        # Handle special keys
         if event.key.lower() == "q":
-            self.exit()  # Use Textual's built-in exit method
-        # Show debug information after pressing the options 'o' key
+            self.exit()  # Exit the application
         elif event.key.lower() == "o":
             await self.action_debug()
-
-            # Refresh the question box with a new question
             await self.refreshQuestions()
-
-        # Scroll up or down using arrow keys
-        if event.key == "up":
+        elif event.key == "up":
             for _ in range(5):
                 self.event_log.scroll_up()
         elif event.key == "down":
@@ -152,8 +117,6 @@ class Tui000(App):
 
 if __name__ == "__main__":
     try:
-        # Only have a log file if -log is passed in
-        # Otherwise, don't log at all
         app = Tui000()
         if len(sys.argv) > 1 and sys.argv[1] == "-log":
             app.run(log="textual.log")

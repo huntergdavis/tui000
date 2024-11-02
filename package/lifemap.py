@@ -1,11 +1,9 @@
 from textual.widget import Widget
-from textual.reactive import reactive
 from rich.text import Text
 from statistics import mode, StatisticsError
 import random
 
 class LifeMap(Widget):
-    life_map = reactive([['X' for i in range(60)] for j in range(50)])
     blocks_per_row: int = 10
     total_rows: int = 24
     colors = [
@@ -14,12 +12,17 @@ class LifeMap(Widget):
         "bright_magenta", "bright_cyan"
     ]
 
-    def __init__(self, life_map_data=None, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        if life_map_data is not None:
-            self.life_map = life_map_data
+        # Initialize life map data as an instance variable
+        self.life_map = [['X' for _ in range(60)] for _ in range(50)]
         # Initialize a color map to store assigned colors for each block
         self.color_map = {}
+
+    def update_life_map(self, new_data):
+        """Method to update the life map data."""
+        self.life_map = new_data
+        self.refresh()  # Refresh the widget to reflect changes
 
     def render(self) -> Text:
         life_map_text = Text()
@@ -28,7 +31,7 @@ class LifeMap(Widget):
 
         for i in range(total_rows):
             for j in range(blocks_per_row):
-                weekends_block = []
+                block_content = []
                 start_row = (i * 50) // total_rows
                 end_row = ((i + 1) * 50) // total_rows
                 start_col = (j * 60) // blocks_per_row
@@ -36,10 +39,10 @@ class LifeMap(Widget):
 
                 for row in range(start_row, end_row):
                     for col in range(start_col, end_col):
-                        weekends_block.append(self.life_map[row][col])
+                        block_content.append(self.life_map[row][col])
 
                 try:
-                    most_common = mode(weekends_block)
+                    most_common = mode(block_content)
                 except StatisticsError:
                     most_common = 'X'
 
