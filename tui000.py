@@ -16,6 +16,7 @@ from package.eventlog import EventLog
 from package.questionbox import QuestionBox
 from package.character import Character
 from package.lifequestions import LifeEventQuestions
+from package.lifeevents import LifeEvents
 
 
 class Tui000(App):
@@ -25,8 +26,16 @@ class Tui000(App):
 
     CSS_PATH = os.path.join(os.path.dirname(__file__), "package", "tui000.css")
 
-    def __init__(self, **kwargs):
+    def __init__(self, debug_mode=False, **kwargs):
         super().__init__(**kwargs)
+
+        # Set tic_rate based on debug_mode flag
+        self.debug_mode = debug_mode
+        if self.debug_mode:
+            self.tic_rate = 0.01  # Faster refresh rate for debugging
+        else:
+            self.tic_rate = 10  # Normal refresh rate
+
         # Initialize widgets
         self.question_box = QuestionBox(id="question_box")
         self.progress_bar = ProgressBar(id="progress_bar")
@@ -43,6 +52,9 @@ class Tui000(App):
             character=self.character,
             id="headshot_widget"
         )
+
+        # Create the LifeEvents instance
+        self.life_events = LifeEvents()
 
         # Create the menu
         menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]R[/b]efresh) ([b]Q[/b]uit)"
@@ -70,7 +82,7 @@ class Tui000(App):
         """
         # Initial setup
         await self.refreshQuestions()
-        self.set_interval(10, self.refreshQuestionsAndIncrementProgress)  # Refresh questions every 10 seconds
+        self.set_interval(self.tic_rate, self.moveGameLoopForwardOrDie)  # Refresh questions every tic_rate seconds
         self.event_log.add_entry("App started.")
         self.event_log.add_entry(f"Welcome, {self.character.bio.name}!")
         self.event_log.add_entry("Waiting for user input...")
@@ -84,15 +96,37 @@ class Tui000(App):
         self.question = question_and_answers['question']
         self.choices = question_and_answers['choices']
         await self.question_box.display_question(self.question, self.choices)
+        # Log the question if debug mode is enabled
+        if self.debug_mode:
+            self.event_log.add_entry(f"New question: {self.question}")
+            self.event_log.scroll_down()
 
-    async def refreshQuestionsAndIncrementProgress(self):
+    async def moveGameLoopForwardOrDie(self):
         """
-        Refresh questions and increment progress in LifeMap.
+        Refresh questions, handle life events, and update progress in LifeMap.
         """
         await self.refreshQuestions()
-        self.life_map_widget.increment_progress()
-        self.progress_bar.decrease_progress()
-        self.headshot_widget.incrementAge()
+
+        # Check for life event
+        life_event = self.life_events.checkforlifeevent(self.character)
+        if life_event == "death":
+            self.event_log.add_entry("A fatal life event occurred.")
+            self.event_log.scroll_down()
+            await self.handle_death_event()
+        else:
+            self.life_map_widget.increment_progress()
+            self.progress_bar.decrease_progress()
+            self.headshot_widget.incrementAge()
+            self.event_log.add_entry(f"Age incremented to {self.character.bio.age}")
+            self.event_log.scroll_down()
+
+    async def handle_death_event(self):
+        """
+        Handle the character's death event.
+        """
+        self.event_log.add_entry("Oh no! Your character has passed away.")
+        self.event_log.scroll_down()
+        await self.refresh_character()
 
     async def action_debug(self) -> None:
         """
@@ -129,7 +163,7 @@ class Tui000(App):
         self.life_map_widget.refresh()
 
         # Reset the progress bar
-        #self.progress_bar.reset_progress()
+        self.progress_bar.reset_progress()
 
     async def on_key(self, event: Key) -> None:
         """
@@ -165,11 +199,16 @@ class Tui000(App):
 
 if __name__ == "__main__":
     try:
-        app = Tui000()
-        if len(sys.argv) > 1 and sys.argv[1] == "-log":
-            app.run(log="textual.log")
-        else:
-            app.run()
+        # Determine if debug flag is set via command line
+        debug_mode = False
+        if len(sys.argv) > 1 and sys.argv[1] == "-debug":
+            debug_mode = True
+
+        # Initialize the application with the debug flag
+        app = Tui000(debug_mode=debug_mode)
+
+        # Run the application
+        app.run()
     except Exception as e:
         print(f"An error occurred: {e}", file=sys.stderr)
     except asyncio.CancelledError:
