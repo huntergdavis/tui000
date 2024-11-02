@@ -32,10 +32,7 @@ class Tui000(App):
         self.character = Character()
 
         # Create the LifeMap widget, pass the character's life_map_data
-        self.life_map_widget = LifeMap(
-            life_map_data=self.character.life_map_data,
-            id="life_map_widget"
-        )
+        self.life_map_widget = LifeMap(id="life_map_widget")
 
         # Create the Headshot widget using the character instance
         self.headshot_widget = Headshot(
@@ -66,7 +63,7 @@ class Tui000(App):
     async def on_mount(self) -> None:
         # Initial setup
         await self.refreshQuestions()
-        self.set_interval(10, self.refreshQuestions)  # Refresh questions every 10 seconds
+        self.set_interval(10, self.refreshQuestionsAndIncrementProgress)  # Refresh questions every 10 seconds
         self.event_log.add_entry("App started.")
         self.event_log.add_entry(f"Welcome, {self.character.bio.name}!")
         self.event_log.add_entry("Waiting for user input...")
@@ -78,6 +75,10 @@ class Tui000(App):
         self.question = question_and_answers['question']
         self.choices = question_and_answers['choices']
         await self.question_box.display_question(self.question, self.choices)
+
+    async def refreshQuestionsAndIncrementProgress(self):
+        await self.refreshQuestions()
+        self.life_map_widget.increment_progress()
 
     async def action_debug(self) -> None:
         # Add debug information to the event log
@@ -95,7 +96,7 @@ class Tui000(App):
         self.headshot_widget.face_text = self.character.headshot_text
 
         # Update the LifeMap widget with new life map data
-        self.life_map_widget.update_life_map(self.character.life_map_data)
+        self.life_map_widget.reset_progress()
 
         # Log the refresh
         self.event_log.add_entry("Character refreshed.")
@@ -103,6 +104,9 @@ class Tui000(App):
 
         # Refresh the question box with a new question
         await self.refreshQuestions()
+
+        # refresh the life map
+        self.life_map_widget.refresh()
 
     async def on_key(self, event: Key) -> None:
         await self.question_box.on_key(event)  # Handle key events in the question box
