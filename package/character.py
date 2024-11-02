@@ -5,6 +5,8 @@ import random
 
 class Character:
     def __init__(self):
+        # Store the generated headshot so it can be used later when the age is updated
+        self.headshot_text_cache = Text()
         self.refresh()  # Initialize by refreshing character data
 
     def generate_headshot_and_bio(self) -> None:
@@ -37,6 +39,9 @@ class Character:
             headshot, face_size, eye_char, eye_color, nose_char, nose_color,
             mouth_char, mouth_color, face_fill_char, face_color, bg_color
         )
+
+        # Cache the headshot without bio by making a deep copy
+        self.headshot_text_cache = self.headshot_text.copy()
 
         # Append bio information below the face
         self.generate_bio(self.headshot_text)
@@ -114,6 +119,15 @@ class Character:
         face_text.append(f"{self.center_text(self.bio.profession)}\n", style="italic")
         face_text.append(f"{self.center_text(f'{self.bio.age} years old')}\n")
         face_text.append(f"{self.center_text(self.bio.life_focus)}\n", style="bold italic")
+
+    def cached_headshot_and_bio(self) -> None:
+        # Use a deep copy to prevent mutations from affecting the cache
+        self.headshot_text = self.headshot_text_cache.copy()
+        self.generate_bio(self.headshot_text)
+
+    def incrementAge(self) -> None:
+        self.bio.set_age(self.bio.age + 1)
+        self.cached_headshot_and_bio()
 
     def refresh(self):
         """Refresh the character's data."""

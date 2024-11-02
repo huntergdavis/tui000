@@ -11,6 +11,12 @@ class Headshot(Widget):
         self.character = character
         self.face_text = self.character.headshot_text
 
+    def incrementAge(self):
+        self.character.incrementAge()
+        self.character.cached_headshot_and_bio()
+        self.face_text = self.character.headshot_text
+        
+
     def render(self) -> Text:
         """Render the headshot and bio."""
         return self.face_text

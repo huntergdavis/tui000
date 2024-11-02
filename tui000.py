@@ -92,6 +92,7 @@ class Tui000(App):
         await self.refreshQuestions()
         self.life_map_widget.increment_progress()
         self.progress_bar.decrease_progress()
+        self.headshot_widget.incrementAge()
 
     async def action_debug(self) -> None:
         """

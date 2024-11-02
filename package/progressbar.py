@@ -21,8 +21,7 @@ class ProgressBar(Static):
             **kwargs: Additional keyword arguments for the Widget.
         """
         super().__init__(**kwargs)
-        self._running = False  # Control variable for animation
-
+        
         # Define color options for cycling
         self.color_options = [
             "dark_cyan", "dim_gray", "dark_slate_gray1", "cadet_blue", "slate_gray"
@@ -56,8 +55,7 @@ class ProgressBar(Static):
         """
         print("ProgressBar mounted.")
         self.refresh()
-        #self.start()  # Start the countdown automatically
-
+        
     def render(self) -> Text:
         """
         Render the progress bar when the widget is displayed.
@@ -67,23 +65,7 @@ class ProgressBar(Static):
         """
         return self.generate_bar()
 
-    def start(self) -> None:
-        """
-        Start the automatic countdown.
-        Schedules the decrease_progress method to run every 5 seconds.
-        """
-        if not self._running:
-            self._running = True
-            print("ProgressBar started countdown.")
-            self.set_interval(5, self.decrease_progress)  # Schedule decrease every 5 seconds
 
-    def stop(self) -> None:
-        """
-        Stop the automatic countdown.
-        """
-        if self._running:
-            self._running = False
-            print("ProgressBar stopped countdown.")
 
     def decrease_progress(self) -> None:
         """
@@ -91,7 +73,7 @@ class ProgressBar(Static):
         When the percentage reaches 0%, choose a new random color and reset to 100%.
         """
         print("ProgressBar decrease_progress called.")
-        if self._running and self.percentage > 0:
+        if self.percentage > 0:
             self.percentage = max(0, self.percentage - 10)
             print(f"ProgressBar percentage decreased to {self.percentage}%")
             self.refresh()
@@ -110,6 +92,5 @@ class ProgressBar(Static):
         """
         self.percentage = 100
         self.color = "cyan"  # Reset to the initial color
-        self._running = False
         print("ProgressBar reset to 100% and stopped.")
         self.refresh()
