@@ -1,3 +1,4 @@
+# tui000.py
 import os
 import shutil
 import sys
@@ -18,6 +19,9 @@ from package.lifequestions import LifeEventQuestions
 
 
 class Tui000(App):
+    """
+    Main application class.
+    """
 
     CSS_PATH = os.path.join(os.path.dirname(__file__), "package", "tui000.css")
 
@@ -31,7 +35,7 @@ class Tui000(App):
         # Create an instance of Character to hold character data
         self.character = Character()
 
-        # Create the LifeMap widget, pass the character's life_map_data
+        # Create the LifeMap widget
         self.life_map_widget = LifeMap(id="life_map_widget")
 
         # Create the Headshot widget using the character instance
@@ -61,26 +65,38 @@ class Tui000(App):
                 yield self.life_map_widget
 
     async def on_mount(self) -> None:
+        """
+        Called when the application mounts.
+        """
         # Initial setup
         await self.refreshQuestions()
         self.set_interval(10, self.refreshQuestionsAndIncrementProgress)  # Refresh questions every 10 seconds
         self.event_log.add_entry("App started.")
         self.event_log.add_entry(f"Welcome, {self.character.bio.name}!")
         self.event_log.add_entry("Waiting for user input...")
-        # Start the progress bar
-        await self.progress_bar.start()
+        # Do NOT call self.progress_bar.start() here
 
     async def refreshQuestions(self):
+        """
+        Fetch and display a new question.
+        """
         question_and_answers = LifeEventQuestions.get_random_question()
         self.question = question_and_answers['question']
         self.choices = question_and_answers['choices']
         await self.question_box.display_question(self.question, self.choices)
 
     async def refreshQuestionsAndIncrementProgress(self):
+        """
+        Refresh questions and increment progress in LifeMap.
+        """
         await self.refreshQuestions()
         self.life_map_widget.increment_progress()
+        self.progress_bar.decrease_progress()
 
     async def action_debug(self) -> None:
+        """
+        Add debug information to the event log.
+        """
         # Add debug information to the event log
         terminal_size = shutil.get_terminal_size((80, 24))
         width, height = terminal_size.columns, terminal_size.lines
@@ -89,6 +105,9 @@ class Tui000(App):
         self.event_log.scroll_down()
 
     async def refresh_character(self):
+        """
+        Refresh the character's data and update widgets accordingly.
+        """
         # Refresh the character data
         self.character.refresh()
 
@@ -105,10 +124,16 @@ class Tui000(App):
         # Refresh the question box with a new question
         await self.refreshQuestions()
 
-        # refresh the life map
+        # Refresh the life map
         self.life_map_widget.refresh()
 
+        # Reset the progress bar
+        #self.progress_bar.reset_progress()
+
     async def on_key(self, event: Key) -> None:
+        """
+        Handle key press events.
+        """
         await self.question_box.on_key(event)  # Handle key events in the question box
 
         # Log the key press
@@ -131,6 +156,9 @@ class Tui000(App):
                 self.event_log.scroll_down()
 
     async def on_ready(self) -> None:
+        """
+        Called when the application is ready.
+        """
         print("App is ready. Press 'q' to quit.")
 
 
