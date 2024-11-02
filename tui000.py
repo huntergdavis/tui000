@@ -37,12 +37,9 @@ class Tui000(App):
             id="life_map_widget"
         )
 
-        # Create the Headshot widget using data from character.bio
+        # Create the Headshot widget using the character instance
         self.headshot_widget = Headshot(
-            character_name=self.character.bio.name,
-            profession=self.character.bio.profession,
-            age=self.character.bio.age,
-            focus=self.character.bio.life_focus,
+            character=self.character,
             id="headshot_widget"
         )
 
@@ -94,12 +91,8 @@ class Tui000(App):
         # Refresh the character data
         self.character.refresh()
 
-        # Update the Headshot widget with new bio data
-        self.headshot_widget.character_name = self.character.bio.name
-        self.headshot_widget.profession = self.character.bio.profession
-        self.headshot_widget.age = self.character.bio.age
-        self.headshot_widget.focus = self.character.bio.life_focus
-        # No need to call refresh; Reactive properties will trigger re-render
+        # Update the Headshot widget with new headshot data
+        self.headshot_widget.face_text = self.character.headshot_text
 
         # Update the LifeMap widget with new life map data
         self.life_map_widget.update_life_map(self.character.life_map_data)
