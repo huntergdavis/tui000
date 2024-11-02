@@ -126,7 +126,7 @@ class Character:
         self.generate_bio(self.headshot_text)
 
     def incrementAge(self) -> None:
-        self.bio.set_age(self.bio.age + 1)
+        self.bio.set_age(self.bio.age + 0.25)
         self.cached_headshot_and_bio()
 
     def refresh(self):
