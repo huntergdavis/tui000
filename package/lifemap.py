@@ -1,3 +1,4 @@
+# lifemap.py
 from textual.widget import Widget
 from rich.text import Text
 from statistics import mode, StatisticsError
@@ -12,11 +13,12 @@ class LifeMap(Widget):
         "bright_magenta", "bright_cyan"
     ]
 
-    def __init__(self, **kwargs):
+    def __init__(self, life_map_data=None, **kwargs):
         super().__init__(**kwargs)
-        # Initialize life map data as an instance variable
-        self.life_map = [['X' for _ in range(60)] for _ in range(50)]
-        # Initialize a color map to store assigned colors for each block
+        if life_map_data is not None:
+            self.life_map = life_map_data
+        else:
+            self.life_map = [['X' for _ in range(60)] for _ in range(50)]
         self.color_map = {}
 
     def update_life_map(self, new_data):

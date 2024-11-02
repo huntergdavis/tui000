@@ -11,13 +11,25 @@ class Headshot(Widget):
     face_text = reactive(Text())
     face_size: int = 18  # Renamed from 'size' to 'face_size'
 
-    def __init__(self, name, profession, age, focus, **kwargs):
+    def __init__(self, character_name, profession, age, focus, **kwargs):
         super().__init__(**kwargs)
-        self.character_name = name
+        self.character_name = character_name
         self.profession = profession
         self.age = age
         self.focus = focus
         self.face_text = Text()
+        self.generate_headshot_and_bio()
+
+    def watch_character_name(self, old_value, new_value):
+        self.generate_headshot_and_bio()
+
+    def watch_profession(self, old_value, new_value):
+        self.generate_headshot_and_bio()
+
+    def watch_age(self, old_value, new_value):
+        self.generate_headshot_and_bio()
+
+    def watch_focus(self, old_value, new_value):
         self.generate_headshot_and_bio()
 
     def generate_headshot_and_bio(self) -> None:

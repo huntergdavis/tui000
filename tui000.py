@@ -13,14 +13,13 @@ from package.lifemap import LifeMap
 from package.progressbar import ProgressBar
 from package.eventlog import EventLog
 from package.questionbox import QuestionBox
-from package.bio import Bio
+from package.character import Character
 from package.lifequestions import LifeEventQuestions
 
 
 class Tui000(App):
 
-    # Set the CSS_PATH to the CSS file in the package directory
-    CSS_PATH = os.path.join("package", "tui000.css")
+    CSS_PATH = os.path.join(os.path.dirname(__file__), "package", "tui000.css")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -29,27 +28,27 @@ class Tui000(App):
         self.progress_bar = ProgressBar(id="progress_bar")
         self.event_log = EventLog(id="event_log")
 
-        # Create an instance of Bio to hold character data
-        self.bio = Bio()
+        # Create an instance of Character to hold character data
+        self.character = Character()
 
-        # Create the LifeMap widget
-        self.life_map_widget = LifeMap(id="life_map_widget")
+        # Create the LifeMap widget, pass the character's life_map_data
+        self.life_map_widget = LifeMap(
+            life_map_data=self.character.life_map_data,
+            id="life_map_widget"
+        )
 
-        # Create the Headshot widget using data from Bio
+        # Create the Headshot widget using data from character.bio
         self.headshot_widget = Headshot(
-            name=self.bio.name,
-            profession=self.bio.profession,
-            age=self.bio.age,
-            focus=self.bio.life_focus,
+            character_name=self.character.bio.name,
+            profession=self.character.bio.profession,
+            age=self.character.bio.age,
+            focus=self.character.bio.life_focus,
             id="headshot_widget"
         )
 
         # Create the menu
-        menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]Q[/b]uit)"
+        menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]R[/b]efresh) ([b]Q[/b]uit)"
         self.menu = Static(menu_content, id="menu")
-
-    # Rest of your code remains the same...
-
 
     def compose(self) -> ComposeResult:
         # Middle container with headshot, question box, and life map
@@ -72,7 +71,7 @@ class Tui000(App):
         await self.refreshQuestions()
         self.set_interval(10, self.refreshQuestions)  # Refresh questions every 10 seconds
         self.event_log.add_entry("App started.")
-        self.event_log.add_entry(f"Welcome, {self.bio.name}!")
+        self.event_log.add_entry(f"Welcome, {self.character.bio.name}!")
         self.event_log.add_entry("Waiting for user input...")
         # Start the progress bar
         await self.progress_bar.start()
@@ -91,6 +90,27 @@ class Tui000(App):
         self.event_log.add_entry(debug_content)
         self.event_log.scroll_down()
 
+    async def refresh_character(self):
+        # Refresh the character data
+        self.character.refresh()
+
+        # Update the Headshot widget with new bio data
+        self.headshot_widget.character_name = self.character.bio.name
+        self.headshot_widget.profession = self.character.bio.profession
+        self.headshot_widget.age = self.character.bio.age
+        self.headshot_widget.focus = self.character.bio.life_focus
+        # No need to call refresh; Reactive properties will trigger re-render
+
+        # Update the LifeMap widget with new life map data
+        self.life_map_widget.update_life_map(self.character.life_map_data)
+
+        # Log the refresh
+        self.event_log.add_entry("Character refreshed.")
+        self.event_log.scroll_down()
+
+        # Refresh the question box with a new question
+        await self.refreshQuestions()
+
     async def on_key(self, event: Key) -> None:
         await self.question_box.on_key(event)  # Handle key events in the question box
 
@@ -104,6 +124,8 @@ class Tui000(App):
         elif event.key.lower() == "o":
             await self.action_debug()
             await self.refreshQuestions()
+        elif event.key.lower() == "r":
+            await self.refresh_character()
         elif event.key == "up":
             for _ in range(5):
                 self.event_log.scroll_up()
