@@ -11,9 +11,19 @@ class LifeMap(Static):
     """
     
     colors = [
-        "red", "green", "yellow", "blue", "magenta", "cyan", "white",
-        "bright_red", "bright_green", "bright_yellow", "bright_blue",
-        "bright_magenta", "bright_cyan"
+        "blue",           # Brightness: 29.07
+        "red",            # Brightness: 76.245
+        "bright_blue",    # Brightness: 104.585
+        "magenta",        # Brightness: 105.315
+        "bright_red",     # Brightness: 135.83
+        "green",          # Brightness: 149.685
+        "bright_magenta", # Brightness: 155.21
+        "cyan",           # Brightness: 178.755
+        "bright_green",   # Brightness: 185.89
+        "bright_cyan",    # Brightness: 204.27
+        "yellow",         # Brightness: 225.93
+        "bright_yellow",  # Brightness: 235.62
+        "white"           # Brightness: 255.0
     ]
     
     def __init__(self, total_elements=240, blocks_per_row=20, **kwargs):
@@ -45,16 +55,13 @@ class LifeMap(Static):
             self.current_index = 1
             self.refresh()  # Refresh the widget to display the initial color
     
-    def increment_progress(self):
+    def increment_progress(self, color: str):
         """
         Color the next 'X' in the life map with the next color from the colors list.
         """
         if self.current_index >= self.total_elements:
             # All 'X's have been colored; optionally, you can reset or stop
             return
-
-        # Determine the color for the current 'X'
-        color = self.colors[self.current_index % len(self.colors)]
         
         # Update the color_map with the new color
         self.color_map[self.current_index] = color

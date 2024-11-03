@@ -32,9 +32,12 @@ class Tui000(App):
         # Set tic_rate based on debug_mode flag
         self.debug_mode = debug_mode
         if self.debug_mode:
-            self.tic_rate = 0.01  # Faster refresh rate for debugging
+            self.tic_rate = 0.002  # Faster refresh rate for debugging
         else:
-            self.tic_rate = 10  # Normal refresh rate
+            self.tic_rate = 2  # Normal refresh rate
+
+        # set current tic to 0
+        self.current_tic = 1
 
         # Initialize widgets
         self.question_box = QuestionBox(id="question_box")
@@ -55,6 +58,10 @@ class Tui000(App):
 
         # Create the LifeEvents instance
         self.life_events = LifeEvents()
+
+        # Initialize lifequestions instance
+        self.life_questions = LifeEventQuestions()
+        
 
         # Create the menu
         menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]R[/b]espawn) ([b]Q[/b]uit)"
@@ -92,7 +99,7 @@ class Tui000(App):
         """
         Fetch and display a new question.
         """
-        question_and_answers = LifeEventQuestions.get_random_question()
+        question_and_answers = self.life_questions.get_random_question()
         self.question = question_and_answers['question']
         self.choices = question_and_answers['choices']
         await self.question_box.display_question(self.question, self.choices)
@@ -102,23 +109,34 @@ class Tui000(App):
             self.event_log.scroll_down()
 
     async def moveGameLoopForwardOrDie(self):
-        """
-        Refresh questions, handle life events, and update progress in LifeMap.
-        """
-        await self.refreshQuestions()
 
-        # Check for life event
-        life_event = self.life_events.checkforlifeevent(self.character)
-        if life_event == "death":
-            self.event_log.add_entry("A fatal life event occurred.")
-            self.event_log.scroll_down()
-            await self.handle_death_event()
-        else:
-            self.life_map_widget.increment_progress()
-            self.progress_bar.decrease_progress()
-            self.headshot_widget.incrementAge()
-            self.event_log.add_entry(f"Age incremented to {self.character.bio.age}")
-            self.event_log.scroll_down()
+        # increment current tic, the heartbeat of the game
+        self.current_tic += 1
+
+        # 3/4 of the time, display as normal, but the last 1/4 display the highlighted entry
+        if self.current_tic % 8 == 0:
+            self.question_box.highlightselectedanswer()
+            self.event_log.add_entry(f"{self.character.bio.name} chose {self.life_questions.get_life_category(self.question_box.getselectedcolor())}")
+        
+        if self.current_tic % 10 == 0:
+            # Check for life event
+            life_event = self.life_events.checkforlifeevent(self.character)
+            if life_event == "death":
+                self.event_log.add_entry("A fatal life event occurred.")
+                self.event_log.scroll_down()
+                await self.handle_death_event()
+            else:
+                self.life_map_widget.increment_progress(self.question_box.getselectedcolor())
+                self.progress_bar.decrease_progress()
+                self.headshot_widget.incrementAge()
+                self.event_log.add_entry(f"Age incremented to {self.character.bio.age}")
+                self.event_log.scroll_down()
+                """
+                Refresh questions, handle life events, and update progress in LifeMap.
+                """
+                await self.refreshQuestions()
+
+ 
 
     async def handle_death_event(self):
         """

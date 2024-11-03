@@ -1,0 +1,94 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "question": "You walk into a car dealership. The dealer is friendly, and you enjoy the experience. Which color car do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Red",
+                    "color": "red",
+                    "life_category": "Relationships"
+                },
+                {
+                    "label": "b",
+                    "text": "Green",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "c",
+                    "text": "Blue",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "d",
+                    "text": "Yellow",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "You receive job offers from two companies. One offers higher pay, the other better work-life balance. Which do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Higher pay",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Work-life balance",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "c",
+                    "text": "Negotiate with both",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "d",
+                    "text": "Start your own business",
+                    "color": "blue",
+                    "life_category": "Career"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "You inherit a large sum of money from a distant relative. What do you do first?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Invest it",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Buy a house",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Travel the world",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "d",
+                    "text": "Donate to charity",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        }
+    ]
+}
