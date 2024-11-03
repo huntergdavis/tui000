@@ -91,23 +91,8 @@ class QuestionBox(Widget):
     def highlightselectedanswer(self) -> None:
         """
         Highlight the selected answer based on a generated index.
-
-        Raises:
-            ValueError: If the index is not in [0, 1, 2, 3].
-            IndexError: If the index is out of range for the available choices.
         """
-        # set selected index to a random 0 to 3 value
-        self.selected_index = randint(0, 3)
-
-        if not isinstance(self.selected_index, int):
-            raise TypeError("Index must be an integer.")
-        if self.selected_index not in [0, 1, 2, 3]:
-            raise ValueError("Index must be 0, 1, 2, or 3.")
-        if self.selected_index >= len(self.choices):
-            raise IndexError("Choice index out of range.")
-        self.selected_index = self.selected_index
-        # Update the selected_color based on the choice's color
-        self.selected_color = self.choices[self.selected_index]['color']
+        self.updateIndexAndColor()
         self.refresh()  # Refresh the widget to apply the highlight
 
     def getselectedcolor(self) -> str:
@@ -117,12 +102,30 @@ class QuestionBox(Widget):
         Returns:
             str: The color name of the selected choice.
 
+        """
+
+        return self.selected_color
+    
+    def updateIndexAndColor(self) -> None:
+        # set selected index to a random 0 to 3 value
+        self.selected_index = randint(0, 3)
+        # Update the selected_color based on the choice's color
+        self.selected_color = self.choices[self.selected_index]['color']
+    
+
+    def getselectedcategory(self) -> str:
+        """
+        Get the life category associated with the currently selected choice.
+
+        Returns:
+            str: The life category of the selected choice.
+
         Raises:
             ValueError: If no choice is currently selected.
         """
         if self.selected_index is None:
             raise ValueError("No choice is currently selected.")
-        return self.selected_color
+        return self.choices[self.selected_index]['life_category']
 
     def render(self) -> Text:
         """
@@ -157,6 +160,7 @@ class QuestionBox(Widget):
             label = choice['label'].upper()
             text = choice['text']
             color = choice['color']
+            category = choice['life_category']
 
             # Ensure the color is a valid Rich color; default to white if not
             try:
@@ -166,7 +170,7 @@ class QuestionBox(Widget):
                 choice_style = Style(color="white")
 
             # Create the choice text
-            choice_text = f"{label}: {text}"
+            choice_text = f"{label}: {text} ({category})"
 
             # Calculate padding
             padding_length = self.max_line_length - len(choice_text)

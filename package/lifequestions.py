@@ -6,22 +6,6 @@ class LifeEventQuestions:
 
     file_path = "./package/questions.json"
 
-    # Mapping of colors to life categories
-    color_category_map = {
-        "blue": "Career",
-        "red": "Relationships",
-        "bright_blue": "Health",
-        "magenta": "Personal Growth",
-        "bright_red": "Family",
-        "green": "Environment",
-        "bright_magenta": "Education",
-        "cyan": "Social Life",
-        "bright_green": "Finance",
-        "bright_cyan": "Community",
-        "yellow": "Leisure",
-        "bright_yellow": "Hobbies",
-        "white": "Spirituality"
-    }
 
     def __init__(self):
         """
@@ -53,8 +37,6 @@ class LifeEventQuestions:
         """Returns a random question and its associated choices."""
         if not self.questions:
             raise ValueError("No questions available to select.")
-        return random.choice(self.questions)
     
-    def get_life_category(self, color):
-        """Returns the life category associated with a given color."""
-        return self.color_category_map.get(color, "Unknown")
+        return random.choice(self.questions)
+

@@ -1,8 +1,8 @@
-# tui000.py
 import os
 import shutil
 import sys
 import asyncio
+import logging
 
 from textual.app import App, ComposeResult
 from textual.containers import Vertical, Horizontal
@@ -61,7 +61,6 @@ class Tui000(App):
 
         # Initialize lifequestions instance
         self.life_questions = LifeEventQuestions()
-        
 
         # Create the menu
         menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]R[/b]espawn) ([b]Q[/b]uit)"
@@ -90,9 +89,9 @@ class Tui000(App):
         # Initial setup
         await self.refreshQuestions()
         self.set_interval(self.tic_rate, self.moveGameLoopForwardOrDie)  # Refresh questions every tic_rate seconds
-        self.event_log.add_entry("App started.")
-        self.event_log.add_entry(f"Welcome, {self.character.bio.name}!")
-        self.event_log.add_entry("Waiting for user input...")
+        self.log_message("App started.")
+        self.log_message(f"Welcome, {self.character.bio.name}!")
+        self.log_message("Waiting for user input...")
         # Do NOT call self.progress_bar.start() here
 
     async def refreshQuestions(self):
@@ -105,8 +104,12 @@ class Tui000(App):
         await self.question_box.display_question(self.question, self.choices)
         # Log the question if debug mode is enabled
         if self.debug_mode:
-            self.event_log.add_entry(f"New question: {self.question}")
-            self.event_log.scroll_down()
+            self.log_message(f"New question: {self.question}")
+
+        # log the answers and their colors if debug is enabled
+        if self.debug_mode:
+            for choice in self.choices:
+                self.log_message(f"{choice['text']} - {choice['color']}")
 
     async def moveGameLoopForwardOrDie(self):
 
@@ -116,34 +119,29 @@ class Tui000(App):
         # 3/4 of the time, display as normal, but the last 1/4 display the highlighted entry
         if self.current_tic % 8 == 0:
             self.question_box.highlightselectedanswer()
-            self.event_log.add_entry(f"{self.character.bio.name} chose {self.life_questions.get_life_category(self.question_box.getselectedcolor())}")
+            self.log_message(f"{self.character.bio.name} chose {self.question_box.getselectedcategory()}")
         
         if self.current_tic % 10 == 0:
             # Check for life event
             life_event = self.life_events.checkforlifeevent(self.character)
             if life_event == "death":
-                self.event_log.add_entry("A fatal life event occurred.")
-                self.event_log.scroll_down()
+                self.log_message("A fatal life event occurred.")
                 await self.handle_death_event()
             else:
                 self.life_map_widget.increment_progress(self.question_box.getselectedcolor())
                 self.progress_bar.decrease_progress()
                 self.headshot_widget.incrementAge()
-                self.event_log.add_entry(f"Age incremented to {self.character.bio.age}")
-                self.event_log.scroll_down()
+                self.log_message(f"Age incremented to {self.character.bio.age}")
                 """
                 Refresh questions, handle life events, and update progress in LifeMap.
                 """
                 await self.refreshQuestions()
 
- 
-
     async def handle_death_event(self):
         """
         Handle the character's death event.
         """
-        self.event_log.add_entry("Oh no! Your character has passed away.")
-        self.event_log.scroll_down()
+        self.log_message("Oh no! Your character has passed away.")
         await self.refresh_character()
 
     async def action_debug(self) -> None:
@@ -154,8 +152,7 @@ class Tui000(App):
         terminal_size = shutil.get_terminal_size((80, 24))
         width, height = terminal_size.columns, terminal_size.lines
         debug_content = f"Terminal size: {width}x{height}"
-        self.event_log.add_entry(debug_content)
-        self.event_log.scroll_down()
+        self.log_message(debug_content)
 
     async def refresh_character(self):
         """
@@ -171,8 +168,7 @@ class Tui000(App):
         self.life_map_widget.reset_progress()
 
         # Log the refresh
-        self.event_log.add_entry("Character refreshed.")
-        self.event_log.scroll_down()
+        self.log_message("Character re-spawned.")
 
         # Refresh the question box with a new question
         await self.refreshQuestions()
@@ -183,6 +179,35 @@ class Tui000(App):
         # Reset the progress bar
         self.progress_bar.reset_progress()
 
+    # handle in-app and out of app logging
+    def log_message(self, message: str, level: str = "info") -> None:
+        """
+        Log a message to the event log and to the textual.log file.
+
+        Args:
+            message (str): The message to log.
+            level (str): The severity level of the log ('debug', 'info', 'warning', 'error', 'critical').
+        """
+        # Log to the event log within the TUI
+        self.event_log.add_entry(message)
+        self.event_log.scroll_down()
+
+        # if debug
+        if self.debug_mode:
+            # Log to the file using the logging module
+            if level.lower() == "debug":
+                logging.debug(message)
+            elif level.lower() == "info":
+                logging.info(message)
+            elif level.lower() == "warning":
+                logging.warning(message)
+            elif level.lower() == "error":
+                logging.error(message)
+            elif level.lower() == "critical":
+                logging.critical(message)
+            else:
+                logging.info(message)  # Default to INFO if unknown level
+
     async def on_key(self, event: Key) -> None:
         """
         Handle key press events.
@@ -190,7 +215,7 @@ class Tui000(App):
         await self.question_box.on_key(event)  # Handle key events in the question box
 
         # Log the key press
-        self.event_log.add_entry(f"Key '{event.key}' pressed.")
+        self.log_message(f"Key '{event.key}' pressed.")
         self.event_log.scroll_down()
 
         # Handle special keys
@@ -200,6 +225,7 @@ class Tui000(App):
             await self.action_debug()
             await self.refreshQuestions()
         elif event.key.lower() == "r":
+            self.current_tic = 1;
             await self.refresh_character()
         elif event.key == "up":
             for _ in range(5):
@@ -221,6 +247,15 @@ if __name__ == "__main__":
         debug_mode = False
         if len(sys.argv) > 1 and sys.argv[1] == "-debug":
             debug_mode = True
+            # Configure logging based on debug_mode
+            logging.basicConfig(
+                level=logging.DEBUG if debug_mode else logging.INFO,
+                format='%(asctime)s - %(levelname)s - %(message)s',
+                handlers=[
+                    logging.FileHandler("textual.log"),
+                    #logging.StreamHandler(sys.stdout)  # Optional: Keep this if you still want some output in terminal
+                ]
+            )
 
         # Initialize the application with the debug flag
         app = Tui000(debug_mode=debug_mode)
