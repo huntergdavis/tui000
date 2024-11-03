@@ -10,33 +10,6 @@ class LifeMap(Static):
     'X' is colored using the next color from the color list.
     """
     
-    # Colors with their brightness values
-    colors = [
-        "blue",           # Brightness: 29.07
-        "red",            # Brightness: 76.245
-        "bright_blue",    # Brightness: 104.585
-        "bright_red",     # Brightness: 135.83
-        "green",          # Brightness: 149.685
-        "cyan",           # Brightness: 178.755
-        "bright_green",   # Brightness: 185.89
-        "bright_cyan",    # Brightness: 204.27
-        "yellow",         # Brightness: 225.93
-        "bright_yellow",  # Brightness: 235.62
-        "white",          # Brightness: 255.0
-        "orange",         # Brightness: 188.28
-        "purple",         # Brightness: 180.0
-        "pink",           # Brightness: 200.0
-        "brown",          # Brightness: 120.0
-        "gray",           # Brightness: 128.0
-        "gold",           # Brightness: 200.0
-        "silver",         # Brightness: 220.0
-        "turquoise",      # Brightness: 150.0
-        "navy",           # Brightness: 50.0
-        "lime",           # Brightness: 200.0
-        "olive",          # Brightness: 130.0
-        "teal"            # Brightness: 100.0
-    ]
-    
     def __init__(self, total_elements=240, blocks_per_row=20, **kwargs):
         """
         Initialize the LifeMap.
@@ -61,7 +34,7 @@ class LifeMap(Static):
 
         # Initially color the first 'X' if available
         if self.life_map:
-            initial_color = self.colors[0]
+            initial_color = "blue"
             self.color_map[0] = initial_color
             self.current_index = 1
             self.refresh()  # Refresh the widget to display the initial color
@@ -94,7 +67,7 @@ class LifeMap(Static):
 
         # Re-color the first 'X' if available
         if self.life_map:
-            initial_color = self.colors[0]
+            initial_color = "blue"
             self.color_map[0] = initial_color
             self.current_index = 1
         

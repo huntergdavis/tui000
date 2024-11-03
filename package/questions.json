@@ -103,7 +103,7 @@
                 {
                     "label": "b",
                     "text": "Suggest a different place",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -145,7 +145,7 @@
                 {
                     "label": "d",
                     "text": "Learning a language",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -199,13 +199,13 @@
                 {
                     "label": "c",
                     "text": "Ask for remote work",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
                     "label": "d",
                     "text": "Negotiate terms",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -265,7 +265,7 @@
                 {
                     "label": "d",
                     "text": "Education",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -319,7 +319,7 @@
                 {
                     "label": "c",
                     "text": "Bird",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -337,7 +337,7 @@
                 {
                     "label": "a",
                     "text": "Apartment",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -379,7 +379,7 @@
                 {
                     "label": "c",
                     "text": "Help them budget",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -403,7 +403,7 @@
                 {
                     "label": "b",
                     "text": "Start running",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -439,7 +439,7 @@
                 {
                     "label": "c",
                     "text": "Negotiate terms",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -475,7 +475,7 @@
                 {
                     "label": "d",
                     "text": "Offer to help organize",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -523,7 +523,7 @@
                 {
                     "label": "b",
                     "text": "Consult a therapist",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -565,7 +565,7 @@
                 {
                     "label": "d",
                     "text": "Leave an anonymous note",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -595,7 +595,7 @@
                 {
                     "label": "d",
                     "text": "Youth mentorship",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -649,7 +649,7 @@
                 {
                     "label": "c",
                     "text": "Bonds",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -673,7 +673,7 @@
                 {
                     "label": "b",
                     "text": "Use public transportation",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -685,7 +685,7 @@
                 {
                     "label": "d",
                     "text": "Bike to work",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 }
             ]
@@ -697,7 +697,7 @@
                 {
                     "label": "a",
                     "text": "Reading",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -745,7 +745,7 @@
                 {
                     "label": "d",
                     "text": "Attend virtually",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -763,7 +763,7 @@
                 {
                     "label": "b",
                     "text": "Use public transport",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -787,7 +787,7 @@
                 {
                     "label": "a",
                     "text": "Healthcare",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -799,7 +799,7 @@
                 {
                     "label": "c",
                     "text": "Education",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -865,7 +865,7 @@
                 {
                     "label": "d",
                     "text": "Send a heartfelt message",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -877,25 +877,25 @@
                 {
                     "label": "a",
                     "text": "Spanish",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "French",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Mandarin Chinese",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "German",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -913,13 +913,13 @@
                 {
                     "label": "b",
                     "text": "Non-fiction",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Biography",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -967,7 +967,7 @@
                 {
                     "label": "a",
                     "text": "Math",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -979,7 +979,7 @@
                 {
                     "label": "c",
                     "text": "History",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1009,13 +1009,13 @@
                 {
                     "label": "c",
                     "text": "Consult a nutritionist",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
                     "label": "d",
                     "text": "Join a meal plan service",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1033,13 +1033,13 @@
                 {
                     "label": "b",
                     "text": "Chess",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Rock climbing",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -1069,13 +1069,13 @@
                 {
                     "label": "c",
                     "text": "Hybrid model",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Occasional remote days",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 }
             ]
@@ -1105,7 +1105,7 @@
                 {
                     "label": "d",
                     "text": "Email them",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1123,7 +1123,7 @@
                 {
                     "label": "b",
                     "text": "Hand it to the police",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -1135,7 +1135,7 @@
                 {
                     "label": "d",
                     "text": "Look for ID to contact them",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1153,7 +1153,7 @@
                 {
                     "label": "b",
                     "text": "Take a class",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1219,7 +1219,7 @@
                 {
                     "label": "c",
                     "text": "Organizer",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1243,13 +1243,13 @@
                 {
                     "label": "b",
                     "text": "Exercise",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
                     "label": "c",
                     "text": "Time management",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1279,7 +1279,7 @@
                 {
                     "label": "c",
                     "text": "Maybe, if time allows",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1327,7 +1327,7 @@
                 {
                     "label": "a",
                     "text": "Read all their books",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1387,7 +1387,7 @@
                 {
                     "label": "a",
                     "text": "Renovate the kitchen",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1399,7 +1399,7 @@
                 {
                     "label": "c",
                     "text": "Add a home office",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -1417,19 +1417,19 @@
                 {
                     "label": "a",
                     "text": "Take an online course",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Read articles",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Attend a workshop",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1495,7 +1495,7 @@
                 {
                     "label": "d",
                     "text": "Voter education",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1507,19 +1507,19 @@
                 {
                     "label": "a",
                     "text": "Marathon",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
                     "label": "b",
                     "text": "Mountain climbing",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
                     "label": "c",
                     "text": "Triathlon",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -1537,13 +1537,13 @@
                 {
                     "label": "a",
                     "text": "Visit museums",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Take art classes",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1567,7 +1567,7 @@
                 {
                     "label": "a",
                     "text": "Help plan it",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1585,7 +1585,7 @@
                 {
                     "label": "d",
                     "text": "Suggest a virtual meetup",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1597,25 +1597,25 @@
                 {
                     "label": "a",
                     "text": "Bachelor’s degree",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Master’s degree",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Doctorate",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Professional certification",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1633,7 +1633,7 @@
                 {
                     "label": "b",
                     "text": "Digital app",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1645,7 +1645,7 @@
                 {
                     "label": "d",
                     "text": "Hire a professional organizer",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1675,7 +1675,7 @@
                 {
                     "label": "d",
                     "text": "Health and wellness",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 }
             ]
@@ -1699,13 +1699,13 @@
                 {
                     "label": "c",
                     "text": "Throw away unnecessary items",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Organize and store",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1735,7 +1735,7 @@
                 {
                     "label": "d",
                     "text": "Start a mini-project",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1753,7 +1753,7 @@
                 {
                     "label": "b",
                     "text": "Hire a stylist",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1765,7 +1765,7 @@
                 {
                     "label": "d",
                     "text": "Attend a fashion workshop",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1789,13 +1789,13 @@
                 {
                     "label": "c",
                     "text": "Health awareness",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
                     "label": "d",
                     "text": "Education reform",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1807,13 +1807,13 @@
                 {
                     "label": "a",
                     "text": "Yes, immediately",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Add it to your list",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1867,19 +1867,19 @@
                 {
                     "label": "a",
                     "text": "Take a DNA test",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Research family history",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Interview relatives",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1897,13 +1897,13 @@
                 {
                     "label": "a",
                     "text": "Read books on finance",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Attend workshops",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1915,7 +1915,7 @@
                 {
                     "label": "d",
                     "text": "Take online courses",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1927,7 +1927,7 @@
                 {
                     "label": "a",
                     "text": "Learn to code",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1945,7 +1945,7 @@
                 {
                     "label": "d",
                     "text": "Survey potential users",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1975,7 +1975,7 @@
                 {
                     "label": "d",
                     "text": "Address it yourself",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -1987,7 +1987,7 @@
                 {
                     "label": "a",
                     "text": "Yes, excitedly",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -1999,13 +1999,13 @@
                 {
                     "label": "c",
                     "text": "Consider a short-term program",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Research before deciding",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2023,7 +2023,7 @@
                 {
                     "label": "b",
                     "text": "Reduce work hours",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -2035,7 +2035,7 @@
                 {
                     "label": "d",
                     "text": "Seek flexible arrangements",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2089,7 +2089,7 @@
                 {
                     "label": "c",
                     "text": "Digital art",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2113,7 +2113,7 @@
                 {
                     "label": "b",
                     "text": "Start a family group chat",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2125,7 +2125,7 @@
                 {
                     "label": "d",
                     "text": "Share family history",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2137,13 +2137,13 @@
                 {
                     "label": "a",
                     "text": "Declutter your space",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Limit new purchases",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2185,7 +2185,7 @@
                 {
                     "label": "d",
                     "text": "Begin planning next goals",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2257,13 +2257,13 @@
                 {
                     "label": "a",
                     "text": "Establish a bedtime routine",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Limit screen time before bed",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
@@ -2293,7 +2293,7 @@
                 {
                     "label": "b",
                     "text": "Advocate for policy change",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2305,7 +2305,7 @@
                 {
                     "label": "d",
                     "text": "Educate others",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2317,7 +2317,7 @@
                 {
                     "label": "a",
                     "text": "Take a cooking class",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2353,7 +2353,7 @@
                 {
                     "label": "b",
                     "text": "Explore a new field",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2383,13 +2383,13 @@
                 {
                     "label": "b",
                     "text": "Blogging platform",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Online resume",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2413,7 +2413,7 @@
                 {
                     "label": "b",
                     "text": "Teach it to others",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2425,7 +2425,7 @@
                 {
                     "label": "d",
                     "text": "Reflect on past interests",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2437,25 +2437,25 @@
                 {
                     "label": "a",
                     "text": "Email inbox",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Photos",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Documents",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Apps and software",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2467,19 +2467,19 @@
                 {
                     "label": "a",
                     "text": "Spreadsheet",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Budgeting app",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Envelope system",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2515,7 +2515,7 @@
                 {
                     "label": "d",
                     "text": "Reduce purchases",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2533,13 +2533,13 @@
                 {
                     "label": "b",
                     "text": "Therapy",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
                     "label": "c",
                     "text": "Journaling",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2557,7 +2557,7 @@
                 {
                     "label": "a",
                     "text": "Visit landmarks",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2605,7 +2605,7 @@
                 {
                     "label": "d",
                     "text": "Provide feedback",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2665,7 +2665,7 @@
                 {
                     "label": "d",
                     "text": "Philosophical readings",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2677,25 +2677,25 @@
                 {
                     "label": "a",
                     "text": "Daily journal",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Video diaries",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Photo albums",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Blogging",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2713,7 +2713,7 @@
                 {
                     "label": "b",
                     "text": "Mentor students",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
@@ -2725,7 +2725,7 @@
                 {
                     "label": "d",
                     "text": "Offer internships",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2737,25 +2737,25 @@
                 {
                     "label": "a",
                     "text": "Wake up earlier",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Plan the night before",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Exercise in the morning",
-                    "color": "bright_blue",
+                    "color": "bright_magenta",
                     "life_category": "Health"
                 },
                 {
                     "label": "d",
                     "text": "Limit distractions",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2803,19 +2803,19 @@
                 {
                     "label": "b",
                     "text": "Enroll in a course",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Read books on wine",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Visit vineyards",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2827,25 +2827,25 @@
                 {
                     "label": "a",
                     "text": "Learn a new language",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Take advanced courses",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Join debates",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Solve puzzles regularly",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2857,25 +2857,25 @@
                 {
                     "label": "a",
                     "text": "Practice calligraphy",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "b",
                     "text": "Write by hand more often",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "c",
                     "text": "Use handwriting guides",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Attend a workshop",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]
@@ -2959,13 +2959,13 @@
                 {
                     "label": "c",
                     "text": "Enhance online presence",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 },
                 {
                     "label": "d",
                     "text": "Seek mentorship",
-                    "color": "bright_magenta",
+                    "color": "bright_blue",
                     "life_category": "Education"
                 }
             ]

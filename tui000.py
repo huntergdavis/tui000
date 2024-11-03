@@ -182,7 +182,7 @@ class Tui000(App):
     # handle in-app and out of app logging
     def log_message(self, message: str, level: str = "info") -> None:
         """
-        Log a message to the event log and to the textual.log file.
+        Log a message to the event log and to the tui000.log file.
 
         Args:
             message (str): The message to log.
@@ -252,7 +252,7 @@ if __name__ == "__main__":
                 level=logging.DEBUG if debug_mode else logging.INFO,
                 format='%(asctime)s - %(levelname)s - %(message)s',
                 handlers=[
-                    logging.FileHandler("textual.log"),
+                    logging.FileHandler("tui000.log"),
                     #logging.StreamHandler(sys.stdout)  # Optional: Keep this if you still want some output in terminal
                 ]
             )
