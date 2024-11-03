@@ -57,7 +57,7 @@ class Tui000(App):
         self.life_events = LifeEvents()
 
         # Create the menu
-        menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]R[/b]efresh) ([b]Q[/b]uit)"
+        menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]R[/b]espawn) ([b]Q[/b]uit)"
         self.menu = Static(menu_content, id="menu")
 
     def compose(self) -> ComposeResult:
