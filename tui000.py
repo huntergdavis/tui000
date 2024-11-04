@@ -39,6 +39,9 @@ class Tui000(App):
         # set current tic to 0
         self.current_tic = 1
 
+        # set graveyard_mode to False
+        self.graveyard_mode = False
+
         # Initialize widgets
         self.question_box = QuestionBox(id="question_box")
         self.progress_bar = ProgressBar(id="progress_bar")
@@ -112,6 +115,10 @@ class Tui000(App):
                 self.log_message(f"{choice['text']} - {choice['color']}")
 
     async def moveGameLoopForwardOrDie(self):
+
+        # if graveyard mode is enabled, end function
+        if self.graveyard_mode:
+            return
 
         # increment current tic, the heartbeat of the game
         self.current_tic += 1
@@ -219,8 +226,9 @@ class Tui000(App):
         await self.question_box.on_key(event)  # Handle key events in the question box
 
         # Log the key press
-        self.log_message(f"Key '{event.key}' pressed.")
-        self.event_log.scroll_down()
+        if self.debug_mode:
+            self.log_message(f"Key '{event.key}' pressed.")
+            self.event_log.scroll_down()
 
         # Handle special keys
         if event.key.lower() == "q":
@@ -229,8 +237,15 @@ class Tui000(App):
             await self.action_debug()
             await self.refreshQuestions()
         elif event.key.lower() == "r":
-            self.current_tic = 1;
+            self.current_tic = 1
             await self.refresh_character()
+        elif event.key.lower() == "g":
+            self.graveyard_mode = not self.graveyard_mode
+            if self.graveyard_mode:
+                self.log_message("Entering graveyard mode.")
+            else:
+                self.log_message("Exiting graveyard mode.")
+
         elif event.key == "up":
             for _ in range(5):
                 self.event_log.scroll_up()
