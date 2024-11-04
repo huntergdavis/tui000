@@ -41,11 +41,11 @@ Press "q" to Quit.
 
 Version Just Like The Concept
 
-![Play Screen](screenshots/play_screen_like_concept.jpg)
+![Play Screen](screenshots/play_screen_like_concept.png)
 ![Play Screen Concept](concept_art/play_screen.jpg)
 
 
-![Graveyard](concept_art/graveyard_like_concept.jpg)
+![Graveyard](concept_art/graveyard_like_concept.png)
 ![Graveyard Concept](concept_art/death_screen.jpg)
 
 
