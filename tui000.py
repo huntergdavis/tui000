@@ -142,6 +142,10 @@ class Tui000(App):
         Handle the character's death event.
         """
         self.log_message("Oh no! Your character has passed away.")
+
+        # write the character out to json file
+        self.character.save_to_json(self.life_map_widget)
+
         await self.refresh_character()
 
     async def action_debug(self) -> None:

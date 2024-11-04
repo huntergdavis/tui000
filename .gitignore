@@ -1,4 +1,5 @@
 __pycache__
-textual.log
+tui000.log
 localtui.sh
 debuglocaltui.sh
+graveyard/*

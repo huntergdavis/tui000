@@ -1,7 +1,10 @@
 # character.py
+from datetime import datetime
+import os
 from package.bio import Bio
 from rich.text import Text
 import random
+import json
 
 class Character:
     def __init__(self):
@@ -133,3 +136,48 @@ class Character:
         """Refresh the character's data."""
         self.bio = Bio()  # Re-generate bio data
         self.generate_headshot_and_bio()  # Generate headshot and bio
+
+    def save_to_json(self, life_map_widget) -> None:
+        """
+        Save the current state of the character, including bio and life map, to a JSON file.
+
+        Args:
+            filename (str): The path to the JSON file where data will be saved.
+            life_map_widget (LifeMap): The LifeMap instance containing life progression data.
+        """
+        # Ensure that the headshot_text has been generated
+        if not hasattr(self, 'headshot_text'):
+            raise ValueError("Headshot text has not been generated yet. Call generate_headshot_and_bio() first.")
+
+        # Prepare the data dictionary
+        data = {
+            "bio": {
+                "name": self.bio.name,
+                "profession": self.bio.profession,
+                "age": self.bio.age,
+                "life_focus": self.bio.life_focus
+            },
+            "headshot": self.headshot_text.plain,  # Convert Rich Text to plain string
+            "life_map": {
+                "color_map": life_map_widget.color_map,       # List of colors corresponding to 'X's
+                "current_index": life_map_widget.current_index  # Current progress index
+            }
+        }
+
+        # Get the current timestamp in a filename-friendly format
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+        # make graveyard directory if it does not exist
+        if not os.path.exists("./graveyard"):
+            os.makedirs("./graveyard")
+
+        # the filename is the name of the character and the timestamp in filename friendly forma
+        filename = f"./graveyard/{self.bio.name.replace(' ', '_')}_{timestamp}.json"
+
+        try:
+            # Write the data to the specified JSON file with indentation for readability
+            with open(filename, 'w') as f:
+                json.dump(data, f, indent=4)
+            print(f"Character state successfully saved to {filename}.")
+        except Exception as e:
+            print(f"Failed to save character state to {filename}: {e}")
