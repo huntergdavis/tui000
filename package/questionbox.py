@@ -312,7 +312,10 @@ class QuestionBox(Widget):
                 self.choices.append({
                     "label": str(i),
                     "text": name,
-                    "color": "cyan",
+
+                    # set color based on last life choice
+                    "color": character["color_map"][1],
+
                     "life_category": "Character"
                 })
 
@@ -343,6 +346,7 @@ class QuestionBox(Widget):
 
             self.loadChoicesByPage()
             self.refresh()
+            self.selected_character = self.characters[self.selected_index + (8 * self.current_page)]
 
     def pageleft(self):
         """
@@ -350,8 +354,13 @@ class QuestionBox(Widget):
         """
         if self.current_page > 0:
             self.current_page -= 1
+
+            # move the higlighted item back to the first item
+            self.selected_index = 0
+            
             self.loadChoicesByPage()
             self.refresh()
+            self.selected_character = self.characters[self.selected_index + (8 * self.current_page)]
 
     def scrollgraveyarddown(self):
         """Scroll down in the graveyard list."""
