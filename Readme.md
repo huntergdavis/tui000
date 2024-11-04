@@ -40,9 +40,9 @@ Press "q" to Quit.
 
 
 Version Just Like The Concept
-![Play Screen](concept_art/play_screen.png)
+![Play Screen](concept_art/play_screen.jpg)
 
-![Graveyard](concept_art/death_screen.png)
+![Graveyard](concept_art/death_screen.jpg)
 
 
 
