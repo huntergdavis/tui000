@@ -12,7 +12,7 @@ from random import randint
 import os
 import json
 
-class QuestionBox(Widget):
+class TopInformationDisplay(Widget):
     """
     A widget to display multiple-choice questions with color-coded choices
     and the ability to highlight a selected answer.
@@ -280,6 +280,11 @@ class QuestionBox(Widget):
         self.load_graveyard()
         if self.characters:
             self.selected_character = self.characters[0]
+        else:
+            self.question = "The graveyard is empty. There are no characters to display."
+            self.choices = []
+            self.refresh()
+            return
         
         # set current_page to 0
         self.current_page = 0
@@ -289,6 +294,9 @@ class QuestionBox(Widget):
         
         # set selected index to 0 + 8*page
         self.selected_index = 0 + 8*self.current_page
+
+        # Update the selected_color based on the choice's color
+        self.selected_color = self.choices[self.selected_index]['color']
 
         # finally refresh
         self.refresh()
@@ -314,7 +322,7 @@ class QuestionBox(Widget):
                     "text": name,
 
                     # set color based on last life choice
-                    "color": character["color_map"][1],
+                    "color": character["color_map"][0],
 
                     "life_category": "Character"
                 })
@@ -344,6 +352,9 @@ class QuestionBox(Widget):
             # move the higlighted item back to the first item
             self.selected_index = 0
 
+            # Update the selected_color based on the choice's color
+            self.selected_color = self.choices[self.selected_index]['color']
+
             self.loadChoicesByPage()
             self.refresh()
             self.selected_character = self.characters[self.selected_index + (8 * self.current_page)]
@@ -357,6 +368,8 @@ class QuestionBox(Widget):
 
             # move the higlighted item back to the first item
             self.selected_index = 0
+            # Update the selected_color based on the choice's color
+            self.selected_color = self.choices[self.selected_index]['color']
             
             self.loadChoicesByPage()
             self.refresh()
@@ -378,6 +391,8 @@ class QuestionBox(Widget):
             if not next_choice_text.startswith('Next'):
                 # Update the selected index
                 self.selected_index = new_index
+                # Update the selected_color based on the choice's color
+                self.selected_color = self.choices[self.selected_index]['color']
                 self.refresh()
                 # Update the selected character based on the new index
                 self.selected_character = self.characters[global_index]
@@ -393,6 +408,8 @@ class QuestionBox(Widget):
         """Scroll up in the graveyard list."""
         if self.selected_index > 0:
             self.selected_index -= 1
+            # Update the selected_color based on the choice's color
+            self.selected_color = self.choices[self.selected_index]['color']
             self.refresh()
             self.selected_character = self.characters[self.selected_index + (8 * self.current_page)]
 

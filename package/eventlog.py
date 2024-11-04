@@ -5,6 +5,7 @@ from rich.text import Text
 class EventLog(Widget):
     log_entries = reactive("")
     scroll_position = reactive(0)  # Track the current scroll position
+    style = "gray"  # Default style for the log entries
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
@@ -44,12 +45,16 @@ class EventLog(Widget):
             self.scroll_position -= 1
         self.update_log()
 
+    def set_log_color(self, color: str) -> None:
+        """Change the color of the log entries."""
+        self.style = color
+
     def render(self) -> Text:
         """Render the log content as rich text with a position indicator."""
         total_entries = len(self.log_entries_list)
 
         # Prepare the content for the log
-        log_text = Text(self.log_entries, style="green")
+        log_text = Text(self.log_entries, style=self.style)
 
         # Create position indicator
         start_position = self.scroll_position + 1

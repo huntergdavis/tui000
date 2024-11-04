@@ -9,6 +9,22 @@ class LifeMap(Static):
     and all subsequent 'X's are black. With each update, the next
     'X' is colored using the next color from the color list.
     """
+
+    color_category_mapping = {
+        "red": "Relationships",
+        "green": "Environment",
+        "blue": "Career",
+        "yellow": "Leisure",
+        "bright_green": "Finance",
+        "magenta": "Personal Growth",
+        "bright_red": "Family",
+        "bright_magenta": "Health",
+        "bright_yellow": "Hobbies",
+        "cyan": "Social Life",
+        "bright_cyan": "Community",
+        "white": "Spirituality",
+        "bright_blue": "Education"
+    }
     
     def __init__(self, total_elements=240, blocks_per_row=20, **kwargs):
         """
@@ -93,3 +109,9 @@ class LifeMap(Static):
             life_map_text.append("\n")
         
         return life_map_text
+
+    def get_category_from_color(self, color):
+        for key, value in self.color_category_mapping.items():
+            if color in key:
+                return value
+        return "black"

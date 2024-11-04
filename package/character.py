@@ -149,6 +149,14 @@ class Character:
         if not hasattr(self, 'headshot_text'):
             raise ValueError("Headshot text has not been generated yet. Call generate_headshot_and_bio() first.")
 
+        # sort the current life map
+        color_map = life_map_widget.color_map
+        color_map.sort()
+
+        # reverse sort the color map
+        color_map.reverse()
+
+
         # Prepare the data dictionary
         data = {
             "bio": {
@@ -159,7 +167,7 @@ class Character:
             },
             "headshot": self.headshot_text.plain,  # Convert Rich Text to plain string
             "life_map": {
-                "color_map": life_map_widget.color_map,       # List of colors corresponding to 'X's
+                "color_map": color_map,       # List of colors corresponding to 'X's
                 "current_index": life_map_widget.current_index  # Current progress index
             }
         }

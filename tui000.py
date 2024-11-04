@@ -13,7 +13,7 @@ from package.headshot import Headshot
 from package.lifemap import LifeMap
 from package.progressbar import ProgressBar
 from package.eventlog import EventLog
-from package.questionbox import QuestionBox
+from package.topinformationdisplay import TopInformationDisplay
 from package.character import Character
 from package.lifequestions import LifeEventQuestions
 from package.lifeevents import LifeEvents
@@ -43,7 +43,7 @@ class Tui000(App):
         self.graveyard_mode = False
 
         # Initialize widgets
-        self.question_box = QuestionBox(id="question_box")
+        self.top_information_display = TopInformationDisplay(id="question_box")
         self.progress_bar = ProgressBar(id="progress_bar")
         self.event_log = EventLog(id="event_log")
 
@@ -66,7 +66,7 @@ class Tui000(App):
         self.life_questions = LifeEventQuestions()
 
         # Create the menu
-        menu_content = "([b]G[/b]raveyard) ([b]O[/b]ptions) ([b]R[/b]espawn) ([b]Q[/b]uit)"
+        menu_content = "([b]G[/b]raveyard) ([b]I[/b]nfo) ([b]R[/b]espawn) ([b]Q[/b]uit)"
         self.menu = Static(menu_content, id="menu")
 
     def compose(self) -> ComposeResult:
@@ -77,7 +77,7 @@ class Tui000(App):
                 yield self.headshot_widget
             # Center container with question box and other widgets
             with Vertical():
-                yield self.question_box
+                yield self.top_information_display
                 yield self.event_log
                 yield self.progress_bar
                 yield self.menu
@@ -104,7 +104,7 @@ class Tui000(App):
         question_and_answers = self.life_questions.get_random_question()
         self.question = question_and_answers['question']
         self.choices = question_and_answers['choices']
-        await self.question_box.display_question(self.question, self.choices)
+        await self.top_information_display.display_question(self.question, self.choices)
         # Log the question if debug mode is enabled
         if self.debug_mode:
             self.log_message(f"New question: {self.question}")
@@ -125,8 +125,8 @@ class Tui000(App):
 
         # 3/4 of the time, display as normal, but the last 1/4 display the highlighted entry
         if self.current_tic % 8 == 0:
-            self.question_box.highlightselectedanswer()
-            self.log_message(f"{self.character.bio.name} chose {self.question_box.getselectedcategory()}")
+            self.top_information_display.highlightselectedanswer()
+            self.log_message(f"{self.character.bio.name} chose {self.top_information_display.getselectedcategory()}")
         
         if self.current_tic % 10 == 0:
             # Check for life event
@@ -135,7 +135,7 @@ class Tui000(App):
                 self.log_message("A fatal life event occurred.")
                 await self.handle_death_event()
             else:
-                self.life_map_widget.increment_progress(self.question_box.getselectedcolor())
+                self.life_map_widget.increment_progress(self.top_information_display.getselectedcolor())
                 self.progress_bar.decrease_progress()
                 self.headshot_widget.incrementAge()
                 self.log_message(f"Age incremented to {self.character.bio.age}")
@@ -195,9 +195,12 @@ class Tui000(App):
         """
         Display the dead character's information.
         """
+
+        if(self.top_information_display.selected_character == None):
+            return
+
         # Display the dead character's information
-        self.log_message("Displaying dead character's information.")
-        self.character = self.question_box.selected_character
+        self.character = self.top_information_display.selected_character
 
         # Update the Headshot widget with new headshot data
         self.headshot_widget.face_text = self.character["headshot_text"]
@@ -210,7 +213,31 @@ class Tui000(App):
         # Refresh the life map
         self.life_map_widget.refresh()
 
+        # start the log
+        self.event_log.set_log_color(self.top_information_display.getselectedcolor())
+        self.log_message("Here Lies " + self.character["bio"]["name"] + "...")
 
+        # now calculate the frequency of each color in the life map
+        color_frequency = {}
+        for color in self.life_map_widget.color_map:
+            if color != "black":
+                if color in color_frequency:
+                    color_frequency[color] += 1
+                else:
+                    color_frequency[color] = 1  
+
+        # get the top color that is not black
+        top_color = max(color_frequency, key=color_frequency.get)
+        second_color = max(color_frequency, key=lambda x: color_frequency[x] if x != top_color else 0)
+        
+        # log the color at current_index minus one
+        self.log_message("They were focused on: " + self.life_map_widget.get_category_from_color(top_color))
+
+        # log the top color
+        self.log_message("And they Dabbled In: " + self.life_map_widget.get_category_from_color(second_color))
+
+        # empty log line
+        self.log_message("")
 
     # handle in-app and out of app logging
     def log_message(self, message: str, level: str = "info") -> None:
@@ -245,19 +272,18 @@ class Tui000(App):
         """
         Handle key press events.
         """
-        await self.question_box.on_key(event)  # Handle key events in the question box
+        await self.top_information_display.on_key(event)  # Handle key events in the question box
 
         # Log the key press
         if self.debug_mode:
-            self.log_message(f"Key '{event.key}' pressed.")
+            # self.log_message(f"Key '{event.key}' pressed.")
             self.event_log.scroll_down()
 
         # Handle special keys
         if event.key.lower() == "q":
             self.exit()  # Exit the application
-        elif event.key.lower() == "o":
+        elif event.key.lower() == "i":
             await self.action_debug()
-            await self.refreshQuestions()
         elif event.key.lower() == "r":
             self.current_tic = 1
             await self.refresh_character()
@@ -265,7 +291,7 @@ class Tui000(App):
             self.graveyard_mode = not self.graveyard_mode
             if self.graveyard_mode:
                 self.log_message("Entering graveyard mode.")
-                await self.question_box.entergraveyardmode()
+                await self.top_information_display.entergraveyardmode()
                 await self.displayDeadCharacter()
             else:
                 self.current_tic = 1
@@ -273,25 +299,25 @@ class Tui000(App):
                 await self.refresh_character()
         elif event.key == "up":
             if self.graveyard_mode:
-                self.question_box.scrollgraveyardup()
+                self.top_information_display.scrollgraveyardup()
                 await self.displayDeadCharacter()
             else:
                 for _ in range(5):
                     self.event_log.scroll_up()
         elif event.key == "down":
             if self.graveyard_mode:
-                self.question_box.scrollgraveyarddown()
+                self.top_information_display.scrollgraveyarddown()
                 await self.displayDeadCharacter()
             else:
                 for _ in range(5):
                     self.event_log.scroll_down()
         elif event.key == "left":
             if self.graveyard_mode:
-                self.question_box.pageleft()
+                self.top_information_display.pageleft()
                 await self.displayDeadCharacter()
         elif event.key == "right":
             if self.graveyard_mode:
-                self.question_box.pageright()
+                self.top_information_display.pageright()
                 await self.displayDeadCharacter()
                     
     async def on_ready(self) -> None:
