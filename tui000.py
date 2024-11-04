@@ -203,7 +203,18 @@ class Tui000(App):
         self.character = self.top_information_display.selected_character
 
         # Update the Headshot widget with new headshot data
-        self.headshot_widget.face_text = self.character["headshot_text"]
+        # first though, put Xs over the eyes as they are dead
+        # the eyes are always at the same offsets
+        temp_headshot_text = self.character["headshot_text"]
+
+        # replace the character at position 95 with an X
+        first_eye = 81
+        temp_headshot_text = (temp_headshot_text[:first_eye] + "X" + temp_headshot_text[first_eye + 1:]  )
+
+        second_eye = 88
+        temp_headshot_text = (temp_headshot_text[:second_eye] + "X" + temp_headshot_text[second_eye + 1:]  )
+
+        self.headshot_widget.face_text = temp_headshot_text
 
         # Update the LifeMap widget with new life map data
         self.life_map_widget.color_map = self.character["color_map"]
@@ -215,6 +226,7 @@ class Tui000(App):
 
         # start the log
         self.event_log.set_log_color(self.top_information_display.getselectedcolor())
+
         self.log_message("Here Lies " + self.character["bio"]["name"] + "...")
 
         # now calculate the frequency of each color in the life map

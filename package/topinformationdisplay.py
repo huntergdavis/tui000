@@ -376,6 +376,9 @@ class TopInformationDisplay(Widget):
             self.selected_character = self.characters[self.selected_index + (8 * self.current_page)]
 
     def scrollgraveyarddown(self):
+        if self.selected_index is None:
+            return
+
         """Scroll down in the graveyard list."""
         # Calculate the potential new index
         new_index = self.selected_index + 1
@@ -405,6 +408,9 @@ class TopInformationDisplay(Widget):
 
             
     def scrollgraveyardup(self):
+        if self.selected_index is None:
+            return
+        
         """Scroll up in the graveyard list."""
         if self.selected_index > 0:
             self.selected_index -= 1
