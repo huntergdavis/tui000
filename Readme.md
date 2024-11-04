@@ -45,7 +45,7 @@ Version Just Like The Concept
 ![Play Screen Concept](concept_art/play_screen.jpg)
 
 
-![Graveyard](concept_art/graveyard_like_concept.png)
+![Graveyard](screenshots/graveyard_like_concept.png)
 ![Graveyard Concept](concept_art/death_screen.jpg)
 
 
