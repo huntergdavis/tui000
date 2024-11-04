@@ -9,6 +9,8 @@ from rich.style import Style
 
 from random import randint
 
+import os
+import json
 
 class QuestionBox(Widget):
     """
@@ -22,6 +24,11 @@ class QuestionBox(Widget):
     selected_choice = reactive("")  # Store the selected choice (if needed)
     selected_index = reactive(None)  # Index of the choice to be highlighted (0-3)
     selected_color = reactive("")  # Color of the selected choice
+    
+    # graveyard mode selected character
+    selected_character = None
+    characters = []
+    current_page = 0
 
     max_line_length: int = 36  # Maximum line length for the box
 
@@ -57,6 +64,9 @@ class QuestionBox(Widget):
         self.selected_index = None
 
         self.refresh()  # Refresh the widget to display the new question
+        """
+        Enter the graveyard and emit an event for the initial selection.
+        """
 
     async def clear(self) -> None:
         """
@@ -229,3 +239,129 @@ class QuestionBox(Widget):
 
         # Ensure each line is right-padded to match max_line_length
         return [line.ljust(max_length) for line in lines]
+
+    def load_graveyard(self):
+        """
+        Load all character JSON files from the graveyard directory.
+        """
+
+        self.graveyard_dir="./graveyard"
+        if not os.path.exists(self.graveyard_dir):
+            print(f"Graveyard directory '{self.graveyard_dir}' does not exist.")
+            return
+
+        # List all JSON files in the graveyard directory
+        files = [f for f in os.listdir(self.graveyard_dir) if f.endswith(".json")]
+        self.characters = []
+
+        for file in files:
+            filepath = os.path.join(self.graveyard_dir, file)
+            try:
+                with open(filepath, 'r') as f:
+                    data = json.load(f)
+                # Extract necessary info
+                character = {
+                    "bio": data["bio"],
+                    "headshot": data.get("headshot", ""),
+                    "life_map": ["X"] * 240,  # Initialize life_map with 240 "X"s
+                    "color_map": data.get("life_map", {}).get("color_map", []),
+                    "current_index": 0
+                }
+                self.characters.append(character)
+            except Exception as e:
+                print(f"Error loading {filepath}: {e}")
+
+        # Sort characters by name
+        self.characters.sort(key=lambda x: x["bio"]["name"])  # Modify sorting criteria as needed
+
+    def entergraveyardmode(self):
+
+        # load graveyard characters
+        self.load_graveyard()
+        if self.characters:
+            self.selected_character = self.characters[0]
+        
+        # set current_page to 0
+        self.current_page = 0
+
+        # load choices by page
+        self.loadChoicesByPage()
+        
+        # set selected index to 0 + 8*page
+        self.selected_index = 0 + 8*self.current_page
+
+        # finally refresh
+        self.refresh()
+
+    def loadChoicesByPage(self):
+        # set question text
+        self.question = "Welcome to the Graveyard! Select a character to view their life map."
+
+        # here we're going to set choices, based on the graveyard characters
+        # as there will be more characters than choices will fit on screen, 
+        # we'll only show the first 8 characters and allow the user to 
+        # page through the list
+        self.choices = []
+
+        # start of range is current_page * 8
+        # end of range is start of range + 8
+        for i in range(self.current_page * 8, self.current_page * 8 + 8):
+            if i < len(self.characters):
+                character = self.characters[i]
+                name = character["bio"]["name"]
+                self.choices.append({
+                    "label": str(i),
+                    "text": name,
+                    "color": "white",
+                    "life_category": "Character"
+                })
+
+        self.choices.append({
+                    "label": "right",
+                    "text": "Next page",
+                    "color": "bright_blue",
+                    "life_category": "Navigation"
+                })
+        
+        self.choices.append({
+            "label": "left",
+            "text": "Previous Page",
+            "color": "bright_blue",
+            "life_category": "Navigation"
+        })
+
+
+    def pageright(self):
+        """
+        Move to the next page of characters in the graveyard.
+        """
+        if (self.current_page + 1) * 8 < len(self.characters):
+            self.current_page += 1
+            self.loadChoicesByPage()
+            self.refresh()
+
+    def pageleft(self):
+        """
+        Move to the previous page of characters in the graveyard.
+        """
+        if self.current_page > 0:
+            self.current_page -= 1
+            self.loadChoicesByPage()
+            self.refresh()
+
+    def scrollgraveyarddown(self):
+        """Scroll down in the graveyard list."""
+        if self.selected_index < len(self.characters) - 1:
+            self.selected_index += 1
+            self.refresh()
+            self.selected_character = self.characters[self.selected_index]
+            
+    def scrollgraveyardup(self):
+        """Scroll up in the graveyard list."""
+        if self.selected_index > 0:
+            self.selected_index -= 1
+            self.refresh()
+            self.selected_character = self.characters[self.selected_index]
+
+        
+        

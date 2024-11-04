@@ -243,16 +243,28 @@ class Tui000(App):
             self.graveyard_mode = not self.graveyard_mode
             if self.graveyard_mode:
                 self.log_message("Entering graveyard mode.")
+                self.question_box.entergraveyardmode()
             else:
                 self.log_message("Exiting graveyard mode.")
-
         elif event.key == "up":
-            for _ in range(5):
-                self.event_log.scroll_up()
+            if self.graveyard_mode:
+                self.question_box.scrollgraveyardup()
+            else:
+                for _ in range(5):
+                    self.event_log.scroll_up()
         elif event.key == "down":
-            for _ in range(5):
-                self.event_log.scroll_down()
-
+            if self.graveyard_mode:
+                self.question_box.scrollgraveyarddown()
+            else:
+                for _ in range(5):
+                    self.event_log.scroll_down()
+        elif event.key == "left":
+            if self.graveyard_mode:
+                self.question_box.pageleft()
+        elif event.key == "right":
+            if self.graveyard_mode:
+                self.question_box.pageright()
+                    
     async def on_ready(self) -> None:
         """
         Called when the application is ready.
