@@ -170,10 +170,11 @@ class Tui000(App):
         Refresh the character's data and update widgets accordingly.
         """
         # Refresh the character data
-        self.character.refresh()
+        self.character = Character()
 
         # Update the Headshot widget with new headshot data
         self.headshot_widget.face_text = self.character.headshot_text
+        self.headshot_widget.character = self.character
 
         # Update the LifeMap widget with new life map data
         self.life_map_widget.reset_progress()
@@ -189,6 +190,27 @@ class Tui000(App):
 
         # Reset the progress bar
         self.progress_bar.reset_progress()
+
+    async def displayDeadCharacter(self):
+        """
+        Display the dead character's information.
+        """
+        # Display the dead character's information
+        self.log_message("Displaying dead character's information.")
+        self.character = self.question_box.selected_character
+
+        # Update the Headshot widget with new headshot data
+        self.headshot_widget.face_text = self.character["headshot_text"]
+
+        # Update the LifeMap widget with new life map data
+        self.life_map_widget.color_map = self.character["color_map"]
+        self.life_map_widget.current_index = self.character["current_index"]
+        self.life_map_widget.life_map = self.character["life_map"]
+
+        # Refresh the life map
+        self.life_map_widget.refresh()
+
+
 
     # handle in-app and out of app logging
     def log_message(self, message: str, level: str = "info") -> None:
@@ -243,27 +265,34 @@ class Tui000(App):
             self.graveyard_mode = not self.graveyard_mode
             if self.graveyard_mode:
                 self.log_message("Entering graveyard mode.")
-                self.question_box.entergraveyardmode()
+                await self.question_box.entergraveyardmode()
+                await self.displayDeadCharacter()
             else:
+                self.current_tic = 1
                 self.log_message("Exiting graveyard mode.")
+                await self.refresh_character()
         elif event.key == "up":
             if self.graveyard_mode:
                 self.question_box.scrollgraveyardup()
+                await self.displayDeadCharacter()
             else:
                 for _ in range(5):
                     self.event_log.scroll_up()
         elif event.key == "down":
             if self.graveyard_mode:
                 self.question_box.scrollgraveyarddown()
+                await self.displayDeadCharacter()
             else:
                 for _ in range(5):
                     self.event_log.scroll_down()
         elif event.key == "left":
             if self.graveyard_mode:
                 self.question_box.pageleft()
+                await self.displayDeadCharacter()
         elif event.key == "right":
             if self.graveyard_mode:
                 self.question_box.pageright()
+                await self.displayDeadCharacter()
                     
     async def on_ready(self) -> None:
         """

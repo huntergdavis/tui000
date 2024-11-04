@@ -262,7 +262,7 @@ class QuestionBox(Widget):
                 # Extract necessary info
                 character = {
                     "bio": data["bio"],
-                    "headshot": data.get("headshot", ""),
+                    "headshot_text": data.get("headshot", ""),
                     "life_map": ["X"] * 240,  # Initialize life_map with 240 "X"s
                     "color_map": data.get("life_map", {}).get("color_map", []),
                     "current_index": 0
@@ -274,7 +274,7 @@ class QuestionBox(Widget):
         # Sort characters by name
         self.characters.sort(key=lambda x: x["bio"]["name"])  # Modify sorting criteria as needed
 
-    def entergraveyardmode(self):
+    async def entergraveyardmode(self):
 
         # load graveyard characters
         self.load_graveyard()
@@ -295,7 +295,7 @@ class QuestionBox(Widget):
 
     def loadChoicesByPage(self):
         # set question text
-        self.question = "Welcome to the Graveyard! Select a character to view their life map."
+        self.question = "Welcome to the Graveyard! Select a character to view their gravestone."
 
         # here we're going to set choices, based on the graveyard characters
         # as there will be more characters than choices will fit on screen, 
@@ -312,7 +312,7 @@ class QuestionBox(Widget):
                 self.choices.append({
                     "label": str(i),
                     "text": name,
-                    "color": "white",
+                    "color": "cyan",
                     "life_category": "Character"
                 })
 
@@ -337,6 +337,10 @@ class QuestionBox(Widget):
         """
         if (self.current_page + 1) * 8 < len(self.characters):
             self.current_page += 1
+
+            # move the higlighted item back to the first item
+            self.selected_index = 0
+
             self.loadChoicesByPage()
             self.refresh()
 
@@ -351,17 +355,37 @@ class QuestionBox(Widget):
 
     def scrollgraveyarddown(self):
         """Scroll down in the graveyard list."""
-        if self.selected_index < len(self.characters) - 1:
-            self.selected_index += 1
-            self.refresh()
-            self.selected_character = self.characters[self.selected_index]
+        # Calculate the potential new index
+        new_index = self.selected_index + 1
+        # Calculate the global index based on current page
+        global_index = new_index + (8 * self.current_page)
+        
+        # Ensure the new index is within the bounds of choices
+        if new_index < len(self.choices):
+            # Get the text of the next choice
+            next_choice_text = self.choices[new_index]['text']
+            
+            # Check if the next choice is a navigation item starting with 'Next'
+            if not next_choice_text.startswith('Next'):
+                # Update the selected index
+                self.selected_index = new_index
+                self.refresh()
+                # Update the selected character based on the new index
+                self.selected_character = self.characters[global_index]
+            else:
+                # Do nothing if the next item is a navigation option
+                pass
+        else:
+            # Do nothing if new_index exceeds the number of choices
+            pass
+
             
     def scrollgraveyardup(self):
         """Scroll up in the graveyard list."""
         if self.selected_index > 0:
             self.selected_index -= 1
             self.refresh()
-            self.selected_character = self.characters[self.selected_index]
+            self.selected_character = self.characters[self.selected_index + (8 * self.current_page)]
 
         
         
