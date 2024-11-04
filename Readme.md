@@ -1,6 +1,7 @@
 This is a Readme for a Terminal Screen Saver called 3000 (tui000).
 
-History: 
+History:
+
 I had the idea one day just relaxing and thinking about Johnny Castaway. 
 I had already ported it to as many platforms as I was interested in.
 What I really missed was that feeling of fun and writing software. 
@@ -12,6 +13,7 @@ After all these years, I keep coming back to the terminal.
 So, in an attempt to recreate that feeling, in the terminal, here's the start and the pitch.
 
 Design:
+
 Constraints: Must target / be usable in 80x24 terminal window. 
 
 Launching the app spawns a character.
