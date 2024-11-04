@@ -11,6 +11,10 @@ Rather, it was the creativity of others that brought purpose to "meaningless" so
 After all these years, I keep coming back to the terminal. 
 
 So, in an attempt to recreate that feeling, in the terminal, here's the start and the pitch.
+You only have 3000 weekends, on average, in your adult life. The life-map assumes that each major choice you make in your life will become the focus, on average, of 12 weekends. Some a lot more, some a lot less, but on average let's take a wild swing at 12 or so. 
+ 
+So you get 240 decisions, some many times over, with how to spend your time.  Sounds like a lot, goes by quick.  Just like life. Probably not of interest to most folks, but of great interest to me.  Useless, silly, simplistic, exactly what I had envisioned.  All future improvements are fun additions to the base concept, and I've got a ton in mind. 
+
 
 Design:
 
