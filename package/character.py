@@ -82,7 +82,7 @@ class Character:
         eyes = ["O", "@", "*", "o"]
         mouth_styles = {
             'smile': [
-                "  \\___/  ",
+                "  \\_____/  ",
                 "         ",
                 "         "
             ],
@@ -92,7 +92,7 @@ class Character:
                 "         "
             ],
             'neutral': [
-                "  -----  ",
+                "  --------  ",
                 "         ",
                 "         "
             ],
@@ -130,8 +130,8 @@ class Character:
         grid[9][9] = nose_char
 
         # Place mouth in the grid (multi-line, shifted left)
-        # mouth start col should be random between 3 and 6
-        mouth_start_col = random.randint(3, 6)
+        # mouth start col should be random between 4 n 5
+        mouth_start_col = random.randint(4, 5)
         mouth_start_row = 13
         for row_offset, line in enumerate(mouth_lines):
             row = mouth_start_row + row_offset
