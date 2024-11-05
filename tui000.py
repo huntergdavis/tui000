@@ -305,10 +305,14 @@ class Tui000(App):
                 self.log_message("Entering graveyard mode.")
                 await self.top_information_display.entergraveyardmode()
                 await self.displayDeadCharacter()
+                # update menu to show gameplay instead of graveyard
+                self.menu.update("([b]G[/b]o Back) ([b]I[/b]nfo) ([b]R[/b]espawn) ([b]Q[/b]uit)")
             else:
                 self.current_tic = 1
                 self.log_message("Exiting graveyard mode.")
                 await self.refresh_character()
+                # update menu to show of graveyard
+                self.menu.update("([b]G[/b]raveyard) ([b]I[/b]nfo) ([b]R[/b]espawn) ([b]Q[/b]uit)")
         elif event.key == "up":
             if self.graveyard_mode:
                 self.top_information_display.scrollgraveyardup()

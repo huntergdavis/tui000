@@ -317,12 +317,20 @@ class TopInformationDisplay(Widget):
             if i < len(self.characters):
                 character = self.characters[i]
                 name = character["bio"]["name"]
+                # get random index for color map
+                # but the color it has can't be black
+                color_map_index = randint(0, len(character["color_map"])) - 1
+                while character["color_map"][color_map_index] == "black":
+                    color_map_index = randint(0, len(character["color_map"])) - 1
+
                 self.choices.append({
                     "label": str(i),
                     "text": name,
 
                     # set color based on last life choice
-                    "color": character["color_map"][0],
+                    # get random index into color map less than it's size
+
+                    "color": character["color_map"][color_map_index],
 
                     "life_category": "Character"
                 })
