@@ -30,6 +30,9 @@ class Character:
         # Generate hairstyles and place them in the grid
         hairstyle_char, hairstyle_color = self.generate_hairstyles(headshot, face_size)
 
+        # Generate eyebrows and place them in the grid
+        eyebrows_char, eyebrows_color = self.generate_eyebrows(headshot, face_size)
+
         # Generate facial features and place them in the grid
         (eye_char, eye_color, nose_char, nose_color, mouth_char, mouth_color,
          face_fill_char, face_color) = self.generate_facial_features(headshot, face_size)
@@ -46,7 +49,8 @@ class Character:
         self.headshot_text = self.grid_to_rich_text(
             headshot, face_size, eye_char, eye_color, nose_char, nose_color,
             mouth_char, mouth_color, face_fill_char, face_color,
-            hairstyle_char, hairstyle_color, bg_color
+            hairstyle_char, hairstyle_color, eyebrows_char, eyebrows_color,
+            bg_color
         )
 
         # Cache the headshot without bio by making a deep copy
@@ -135,6 +139,27 @@ class Character:
 
         return hairstyle_char, hairstyle_color
 
+    def generate_eyebrows(self, grid: list, face_size: int) -> tuple:
+        """
+        Generate and place eyebrows on the grid.
+
+        Returns:
+            A tuple containing the left and right eyebrow characters and their corresponding colors.
+        """
+        eyebrow_styles = ["///", "^^^", "---", "~~~", "***"]
+        eyebrow_style = random.choice(eyebrow_styles)
+        eyebrow_color = random.choice(["brown", "black", "grey", "dark_blue", "dark_green"])
+
+        # Place left eyebrow
+        for idx, char in enumerate(eyebrow_style):
+            grid[3][4 + idx] = char
+
+        # Place right eyebrow
+        for idx, char in enumerate(eyebrow_style):
+            grid[3][11 + idx] = char
+
+        return (eyebrow_style, eyebrow_color)  # Representative characters for styling
+
     def fill_face(self, grid: list, face_fill_char: str, face_size: int) -> None:
         """Fill the empty spaces in the face with the face_fill_char."""
         for i in range(face_size):
@@ -146,6 +171,7 @@ class Character:
                           nose_char: str, nose_color: str, mouth_char: str,
                           mouth_color: str, face_fill_char: str, face_color: str,
                           hairstyle_char: str, hairstyle_color: str,
+                          eyebrows_char: str, eyebrows_color: str,
                           bg_color: str) -> Text:
         """
         Convert the grid to a Rich Text object with appropriate styling.
@@ -163,6 +189,8 @@ class Character:
             face_color (str): Color for the face fill.
             hairstyle_char (str): Character representing the hairstyle.
             hairstyle_color (str): Color for the hairstyle.
+            eyebrows_char (str): String representing the eyebrow characters.
+            eyebrows_color (str): Color for the eyebrows.
             bg_color (str): Background color.
 
         Returns:
@@ -178,6 +206,8 @@ class Character:
                     face_text.append(char, style=f"{nose_color} {bg_color}")
                 elif char == mouth_char:
                     face_text.append(char, style=f"{mouth_color} {bg_color}")
+                elif char in eyebrows_char:
+                    face_text.append(char, style=f"{eyebrows_color} {bg_color}")
                 elif char == hairstyle_char:
                     face_text.append(char, style=f"{hairstyle_color} {bg_color}")
                 elif char in ["-", "|"]:  # Border chars
