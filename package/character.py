@@ -34,7 +34,7 @@ class Character:
         eyebrows_char, eyebrows_color = self.generate_eyebrows(headshot, face_size)
 
         # Generate facial features and place them in the grid
-        (eye_char, eye_color, nose_char, nose_color, mouth_char, mouth_color,
+        (eye_char, eye_color, nose_char, nose_color, mouth_chars, mouth_color,
          face_fill_char, face_color) = self.generate_facial_features(headshot, face_size)
 
         # Optionally use a background color
@@ -48,7 +48,7 @@ class Character:
         # Convert the grid to rich text with coloring
         self.headshot_text = self.grid_to_rich_text(
             headshot, face_size, eye_char, eye_color, nose_char, nose_color,
-            mouth_char, mouth_color, face_fill_char, face_color,
+            mouth_chars, mouth_color, face_fill_char, face_color,
             hairstyle_char, hairstyle_color, eyebrows_char, eyebrows_color,
             bg_color
         )
@@ -80,7 +80,34 @@ class Character:
 
         # Characters to represent different parts of the face
         eyes = ["O", "@", "*", "o"]
-        mouth = ["-", "=", "~"]
+        mouth_styles = {
+            'smile': [
+                "  \\___/  ",
+                "         ",
+                "         "
+            ],
+            'frown': [
+                "  /___\\  ",
+                "         ",
+                "         "
+            ],
+            'neutral': [
+                "  -----  ",
+                "         ",
+                "         "
+            ],
+            'grin': [
+                " :D___D: ",
+                "         ",
+                "         "
+            ],
+            'angry': [
+                " >___<  ",
+                "         ",
+                "         "
+            ]
+        }
+
         nose = ["|", "^", "v"]
         face_fill = [".", " "]
 
@@ -89,21 +116,51 @@ class Character:
         eye_color = random.choice(colors)
         nose_char = random.choice(nose)
         nose_color = random.choice(colors)
-        mouth_char = random.choice(mouth)
+        mouth_style = random.choice(list(mouth_styles.keys()))
+        mouth_lines = mouth_styles[mouth_style]
+        mouth_chars = set(char for line in mouth_lines for char in line if char.strip())
         mouth_color = random.choice(colors)
         face_fill_char = random.choice(face_fill)
         face_color = random.choice(colors)
 
-        # Place eyes, nose, and mouth in the grid
+        # Place eyes and nose in the grid
         grid[4][5] = eye_char
         grid[4][12] = eye_char
         grid[9][8] = nose_char
         grid[9][9] = nose_char
-        for i in range(6, 12):
-            grid[14][i] = mouth_char
+
+        # Place mouth in the grid (multi-line, shifted left)
+        # mouth start col should be random between 3 and 6
+        mouth_start_col = random.randint(3, 6)
+        mouth_start_row = 13
+        for row_offset, line in enumerate(mouth_lines):
+            row = mouth_start_row + row_offset
+            for col_offset, char in enumerate(line):
+                grid[row][mouth_start_col + col_offset] = char
 
         return (eye_char, eye_color, nose_char, nose_color,
-                mouth_char, mouth_color, face_fill_char, face_color)
+                list(mouth_chars), mouth_color, face_fill_char, face_color)
+
+    def generate_eyebrows(self, grid: list, face_size: int) -> tuple:
+        """
+        Generate and place eyebrows on the grid.
+
+        Returns:
+            A tuple containing the eyebrows characters and their corresponding color.
+        """
+        eyebrow_styles = ["///", "^^^", "---", "~~~", "***"]
+        eyebrow_char = random.choice(eyebrow_styles)
+        eyebrow_color = random.choice(["brown", "black", "grey", "dark_blue", "dark_green"])
+
+        # Place left eyebrow
+        for idx, char in enumerate(eyebrow_char):
+            grid[3][4 + idx] = char
+
+        # Place right eyebrow
+        for idx, char in enumerate(eyebrow_char):
+            grid[3][11 + idx] = char
+
+        return (eyebrow_char, eyebrow_color)  # Representative characters for styling
 
     def generate_hairstyles(self, grid: list, face_size: int) -> tuple:
         """
@@ -139,27 +196,6 @@ class Character:
 
         return hairstyle_char, hairstyle_color
 
-    def generate_eyebrows(self, grid: list, face_size: int) -> tuple:
-        """
-        Generate and place eyebrows on the grid.
-
-        Returns:
-            A tuple containing the left and right eyebrow characters and their corresponding colors.
-        """
-        eyebrow_styles = ["///", "^^^", "---", "~~~", "***"]
-        eyebrow_style = random.choice(eyebrow_styles)
-        eyebrow_color = random.choice(["brown", "black", "grey", "dark_blue", "dark_green"])
-
-        # Place left eyebrow
-        for idx, char in enumerate(eyebrow_style):
-            grid[3][4 + idx] = char
-
-        # Place right eyebrow
-        for idx, char in enumerate(eyebrow_style):
-            grid[3][11 + idx] = char
-
-        return (eyebrow_style, eyebrow_color)  # Representative characters for styling
-
     def fill_face(self, grid: list, face_fill_char: str, face_size: int) -> None:
         """Fill the empty spaces in the face with the face_fill_char."""
         for i in range(face_size):
@@ -168,7 +204,7 @@ class Character:
                     grid[i][j] = face_fill_char
 
     def grid_to_rich_text(self, grid: list, face_size: int, eye_char: str, eye_color: str,
-                          nose_char: str, nose_color: str, mouth_char: str,
+                          nose_char: str, nose_color: str, mouth_chars: list,
                           mouth_color: str, face_fill_char: str, face_color: str,
                           hairstyle_char: str, hairstyle_color: str,
                           eyebrows_char: str, eyebrows_color: str,
@@ -183,7 +219,7 @@ class Character:
             eye_color (str): Color for the eyes.
             nose_char (str): Character representing the nose.
             nose_color (str): Color for the nose.
-            mouth_char (str): Character representing the mouth.
+            mouth_chars (list): Characters representing the mouth.
             mouth_color (str): Color for the mouth.
             face_fill_char (str): Character used to fill the face.
             face_color (str): Color for the face fill.
@@ -204,7 +240,7 @@ class Character:
                     face_text.append(char, style=f"{eye_color} {bg_color}")
                 elif char == nose_char:
                     face_text.append(char, style=f"{nose_color} {bg_color}")
-                elif char == mouth_char:
+                elif char in mouth_chars:
                     face_text.append(char, style=f"{mouth_color} {bg_color}")
                 elif char in eyebrows_char:
                     face_text.append(char, style=f"{eyebrows_color} {bg_color}")
