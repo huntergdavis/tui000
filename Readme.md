@@ -30,20 +30,12 @@ Run with python after installing requirements.txt
 
 Pass the -debug flag for more logging and 100x speed
 
-Instructions During Use: 
-Press the "i" key for info, right now that's just your terminal size. 
-Press the "r" key to re-spawn a new character. 
-Press the "g" key to enter/exit graveyard mode
-While in graveyard mode, press the "right" and "left" keys to walk through the aisles of the graveyard.
-While in graveyard mode, press Up and Down to highlight tombstones.
-Press "q" to Quit. 
+Building with Docker:
+sudo docker build -t tui000 .
 
+Running with Docker:
+sudo docker build -t tui000 .
 
-Version Just Like The Concept
-
-Main Screensaver Screen ->
-![Play Screen](screenshots/play_screen_like_concept.png)
-![Play Screen Concept](concept_art/play_screen.jpg)
 
 Main Graveyard Screen -> 
 ![Graveyard](screenshots/graveyard_like_concept.png)
