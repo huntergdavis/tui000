@@ -1,6 +1,16 @@
 import random
 
 class Bio:
+    def __init__(self):
+        self.name = self.generate_name()
+        self.profession = self.generate_profession()
+        self.age = self.generate_age()
+        self.life_focus = self.generate_life_focus()
+
+    # method to set new age
+    def set_age(self, age):
+        self.age = age
+
     @staticmethod
     def generate_name():
         first_names = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Helen"]
@@ -14,7 +24,7 @@ class Bio:
     
     @staticmethod
     def generate_age():
-        return random.randint(18, 65)
+        return random.randint(18, 22)
     
     @staticmethod
     def generate_life_focus():

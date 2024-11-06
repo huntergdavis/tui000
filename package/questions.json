@@ -1,0 +1,3004 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "question": "You walk into a car dealership. The dealer is friendly, and you enjoy the experience. Which color car do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Red",
+                    "color": "red",
+                    "life_category": "Relationships"
+                },
+                {
+                    "label": "b",
+                    "text": "Green",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "c",
+                    "text": "Blue",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "d",
+                    "text": "Yellow",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "You receive job offers from two companies. One offers higher pay, the other better work-life balance. Which do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Higher pay",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Work-life balance",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "c",
+                    "text": "Negotiate with both",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "d",
+                    "text": "Start your own business",
+                    "color": "blue",
+                    "life_category": "Career"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "You inherit a large sum of money from a distant relative. What do you do first?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Invest it",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Buy a house",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Travel the world",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "d",
+                    "text": "Donate to charity",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": "You're planning a vacation with friends, but they want to go somewhere you're not interested in. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Go anyway",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "Suggest a different place",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Stay home",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Plan a solo trip elsewhere",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "question": "You decide to start a new hobby. Which one do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Painting",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "b",
+                    "text": "Gardening",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "c",
+                    "text": "Playing an instrument",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "d",
+                    "text": "Learning a language",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "question": "A friend asks you to help them move on your only day off. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Help them",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Politely decline",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "c",
+                    "text": "Offer partial help",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "d",
+                    "text": "Hire movers for them",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "question": "You get a chance to relocate to a new city for a job promotion. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Accept",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "b",
+                    "text": "Decline",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Ask for remote work",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Negotiate terms",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "question": "You find out that your best friend is moving across the country. How do you react?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Throw a farewell party",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "Plan regular visits",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "c",
+                    "text": "Feel sad but supportive",
+                    "color": "red",
+                    "life_category": "Relationships"
+                },
+                {
+                    "label": "d",
+                    "text": "Offer to help with the move",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "question": "You have an opportunity to go back to school and pursue a degree. What do you study?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Business",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Art and Design",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "c",
+                    "text": "Computer Science",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "d",
+                    "text": "Education",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "question": "Your company is offering a 6-month sabbatical. How do you spend it?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Travel",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "Start a personal project",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Relax at home",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "d",
+                    "text": "Volunteer work",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "question": "You decide to adopt a pet. Which animal do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Dog",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Cat",
+                    "color": "red",
+                    "life_category": "Relationships"
+                },
+                {
+                    "label": "c",
+                    "text": "Bird",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Rabbit",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "question": "You're considering buying a home. What type do you prefer?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Apartment",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Single-family house",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "c",
+                    "text": "Condominium",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Townhouse",
+                    "color": "green",
+                    "life_category": "Environment"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "question": "A close family member needs financial assistance. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Give them money",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Offer a loan",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "c",
+                    "text": "Help them budget",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Politely decline",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "question": "You want to improve your fitness. What activity do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Join a gym",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "b",
+                    "text": "Start running",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Yoga classes",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "d",
+                    "text": "Team sports",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "question": "You're offered a leadership role at work. How do you respond?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Accept eagerly",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "b",
+                    "text": "Decline politely",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Negotiate terms",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Request time to consider",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "question": "Your friend invites you to a networking event. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Attend and network",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "b",
+                    "text": "Decline the invitation",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Suggest meeting afterward",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "d",
+                    "text": "Offer to help organize",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "question": "You notice a coworker taking credit for your work. How do you handle it?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Confront them",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Speak to your manager",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "c",
+                    "text": "Let it go",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "d",
+                    "text": "Document your contributions",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "question": "You're feeling burnt out. What action do you take?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Take a vacation",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "Consult a therapist",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Change your routine",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "d",
+                    "text": "Ignore it and continue",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "question": "A neighbor plays loud music late at night. How do you address it?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Talk to them politely",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "b",
+                    "text": "Call the authorities",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "c",
+                    "text": "Ignore it",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "d",
+                    "text": "Leave an anonymous note",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "question": "You want to volunteer in your community. Which cause do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Environmental cleanup",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "b",
+                    "text": "Homeless shelters",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "c",
+                    "text": "Animal rescue",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "d",
+                    "text": "Youth mentorship",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "question": "You discover a passion for cooking. What cuisine do you focus on?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Italian",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "Japanese",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Mexican",
+                    "color": "red",
+                    "life_category": "Relationships"
+                },
+                {
+                    "label": "d",
+                    "text": "Mediterranean",
+                    "color": "green",
+                    "life_category": "Environment"
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "question": "You decide to start investing. What do you invest in?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Stocks",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Real estate",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Bonds",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Cryptocurrency",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "question": "Your car breaks down beyond repair. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Buy a new car",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Use public transportation",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Carpool with coworkers",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "d",
+                    "text": "Bike to work",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "question": "You have free time on weekends. How do you spend it?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Reading",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Outdoor activities",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "c",
+                    "text": "Watching movies",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "d",
+                    "text": "Socializing with friends",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "question": "You're invited to a friend's wedding abroad. Do you attend?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Yes, definitely",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "b",
+                    "text": "No, too expensive",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Send a gift instead",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "d",
+                    "text": "Attend virtually",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "question": "You want to reduce your environmental impact. What do you change?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Recycle more",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "b",
+                    "text": "Use public transport",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Adopt a plant-based diet",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "d",
+                    "text": "Install solar panels",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "question": "You feel the need for a career change. What field do you consider?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Healthcare",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "b",
+                    "text": "Technology",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "c",
+                    "text": "Education",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Entrepreneurship",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "question": "You win a free class at a local community center. What do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Dance",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "b",
+                    "text": "Pottery",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "c",
+                    "text": "Photography",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Culinary arts",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "question": "Your friend's birthday is coming up. How do you celebrate?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Throw a surprise party",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "b",
+                    "text": "Plan a dinner out",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "c",
+                    "text": "Get a thoughtful gift",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "d",
+                    "text": "Send a heartfelt message",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "question": "You want to learn a new language. Which one do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Spanish",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "French",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Mandarin Chinese",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "German",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "question": "You decide to write a book. What genre do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Fiction",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "b",
+                    "text": "Non-fiction",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Biography",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Science Fiction",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "question": "You consider starting a small business. What type do you start?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Cafe",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Online store",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Consulting firm",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "d",
+                    "text": "Handmade crafts",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "question": "You're offered a chance to teach a class. What subject do you teach?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Math",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Art",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "c",
+                    "text": "History",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Computer Science",
+                    "color": "blue",
+                    "life_category": "Career"
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "question": "You want to adopt a healthier diet. What approach do you take?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Go vegetarian",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "b",
+                    "text": "Cook more at home",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "c",
+                    "text": "Consult a nutritionist",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Join a meal plan service",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "question": "A new hobby catches your eye. Which do you pick up?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Knitting",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "b",
+                    "text": "Chess",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Rock climbing",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Photography",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "question": "You have the option to work remotely. Do you take it?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Yes, full-time remote",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "b",
+                    "text": "No, prefer office",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Hybrid model",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Occasional remote days",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "question": "You want to reconnect with an old friend. How do you reach out?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Call them",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Send a message",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "c",
+                    "text": "Plan a meetup",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Email them",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "question": "You find a lost wallet on the street. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Return it to the owner",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Hand it to the police",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Leave it there",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "d",
+                    "text": "Look for ID to contact them",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "question": "You're interested in improving your public speaking skills. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Join a speaking club",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "b",
+                    "text": "Take a class",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Practice on your own",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Avoid public speaking",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "question": "You decide to plant a garden. What do you grow?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Vegetables",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "b",
+                    "text": "Flowers",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Herbs",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "d",
+                    "text": "Fruit trees",
+                    "color": "green",
+                    "life_category": "Environment"
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "question": "You're invited to participate in a charity event. Which role do you take?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Volunteer",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "b",
+                    "text": "Donor",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Organizer",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Participant",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "question": "You want to reduce stress in your life. What method do you try?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Meditation",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "b",
+                    "text": "Exercise",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Time management",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Hobbies",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                }
+            ]
+        },
+        {
+            "id": 43,
+            "question": "You have the opportunity to mentor someone. Do you accept?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Yes, happily",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "b",
+                    "text": "No, not interested",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Maybe, if time allows",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Refer them to someone else",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                }
+            ]
+        },
+        {
+            "id": 44,
+            "question": "You're considering getting a pet. Do you adopt or buy?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Adopt from a shelter",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Buy from a breeder",
+                    "color": "red",
+                    "life_category": "Relationships"
+                },
+                {
+                    "label": "c",
+                    "text": "Pet-sit instead",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Decide against getting a pet",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                }
+            ]
+        },
+        {
+            "id": 45,
+            "question": "You find a new favorite author. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Read all their books",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Attend a book signing",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "c",
+                    "text": "Recommend to friends",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Join a fan club",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                }
+            ]
+        },
+        {
+            "id": 46,
+            "question": "You're offered free tickets to a concert. Do you go?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Yes, love live music",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "No, not interested",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Give tickets to someone else",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "d",
+                    "text": "Sell the tickets",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                }
+            ]
+        },
+        {
+            "id": 47,
+            "question": "You want to improve your home. What project do you undertake?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Renovate the kitchen",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Landscape the yard",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "c",
+                    "text": "Add a home office",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Redecorate the living room",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                }
+            ]
+        },
+        {
+            "id": 48,
+            "question": "A new technology interests you. How do you learn more?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Take an online course",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Read articles",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Attend a workshop",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Experiment on your own",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                }
+            ]
+        },
+        {
+            "id": 49,
+            "question": "You're feeling adventurous with food. What do you try?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "A new restaurant",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "Cooking exotic recipes",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Attend a food festival",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "d",
+                    "text": "Try street food",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                }
+            ]
+        },
+        {
+            "id": 50,
+            "question": "You decide to get involved in local politics. What role do you take?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Run for office",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Campaign volunteer",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "c",
+                    "text": "Community organizer",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Voter education",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 51,
+            "question": "You want to challenge yourself physically. What do you attempt?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Marathon",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "b",
+                    "text": "Mountain climbing",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Triathlon",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Join a sports league",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                }
+            ]
+        },
+        {
+            "id": 52,
+            "question": "You're interested in art. How do you explore this interest?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Visit museums",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Take art classes",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Collect art",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Support local artists",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 53,
+            "question": "A family member suggests a reunion. How do you respond?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Help plan it",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Attend eagerly",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "c",
+                    "text": "Decline politely",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Suggest a virtual meetup",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 54,
+            "question": "You consider furthering your education. What level do you pursue?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Bachelor’s degree",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Master’s degree",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Doctorate",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Professional certification",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 55,
+            "question": "You want to become more organized. What tool do you use?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Planner",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "b",
+                    "text": "Digital app",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Bullet journal",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Hire a professional organizer",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 56,
+            "question": "You're thinking about your retirement plans. What do you focus on?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Financial savings",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Location",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "c",
+                    "text": "Activities and hobbies",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Health and wellness",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                }
+            ]
+        },
+        {
+            "id": 57,
+            "question": "You decide to reduce clutter at home. How do you proceed?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Donate items",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Hold a garage sale",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Throw away unnecessary items",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Organize and store",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 58,
+            "question": "You receive an unexpected day off. How do you spend it?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Relax at home",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "b",
+                    "text": "Catch up on errands",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Visit friends",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "d",
+                    "text": "Start a mini-project",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 59,
+            "question": "You want to enhance your wardrobe. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Go shopping",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "b",
+                    "text": "Hire a stylist",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Revamp existing clothes",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Attend a fashion workshop",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 60,
+            "question": "You're considering getting involved in a cause. Which one?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Environmental protection",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "b",
+                    "text": "Human rights",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "c",
+                    "text": "Health awareness",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Education reform",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 61,
+            "question": "A friend recommends a new podcast. Do you listen?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Yes, immediately",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Add it to your list",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Not interested",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "d",
+                    "text": "Recommend one back",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 62,
+            "question": "You feel disconnected from nature. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Go hiking",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "b",
+                    "text": "Camping trip",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "c",
+                    "text": "Visit a park",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "d",
+                    "text": "Start gardening",
+                    "color": "green",
+                    "life_category": "Environment"
+                }
+            ]
+        },
+        {
+            "id": 63,
+            "question": "You're interested in learning about your ancestry. How do you proceed?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Take a DNA test",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Research family history",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Interview relatives",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Join a genealogy group",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 64,
+            "question": "You want to improve your financial literacy. What steps do you take?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Read books on finance",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Attend workshops",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Hire a financial advisor",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "d",
+                    "text": "Take online courses",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "question": "You have an idea for a mobile app. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Learn to code",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Hire a developer",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Pitch to investors",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "d",
+                    "text": "Survey potential users",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 66,
+            "question": "You notice a local issue that needs attention. How do you act?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Start a petition",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "b",
+                    "text": "Inform local authorities",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "c",
+                    "text": "Organize a community meeting",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Address it yourself",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 67,
+            "question": "You're offered an opportunity to study abroad. Do you take it?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Yes, excitedly",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "No, stay home",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Consider a short-term program",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Research before deciding",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 68,
+            "question": "You decide to improve your work-life balance. What change do you make?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Set boundaries",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "b",
+                    "text": "Reduce work hours",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Prioritize self-care",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "d",
+                    "text": "Seek flexible arrangements",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 69,
+            "question": "You want to experience a cultural festival. Which do you attend?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Carnival in Brazil",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "Oktoberfest in Germany",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "c",
+                    "text": "Cherry Blossom Festival in Japan",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Diwali in India",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "question": "You're inspired to create art. What medium do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Painting",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "b",
+                    "text": "Sculpture",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "c",
+                    "text": "Digital art",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Photography",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                }
+            ]
+        },
+        {
+            "id": 71,
+            "question": "You wish to strengthen your relationship with family. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Plan regular gatherings",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Start a family group chat",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Organize a family vacation",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "d",
+                    "text": "Share family history",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 72,
+            "question": "You're considering adopting a minimalist lifestyle. What's your first step?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Declutter your space",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Limit new purchases",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Simplify your schedule",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "d",
+                    "text": "Reflect on values",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                }
+            ]
+        },
+        {
+            "id": 73,
+            "question": "You receive a promotion at work. How do you celebrate?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Dinner with loved ones",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Treat yourself to something nice",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Share the news on social media",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "d",
+                    "text": "Begin planning next goals",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 74,
+            "question": "You have a chance to learn an instrument. Which do you pick?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Guitar",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "b",
+                    "text": "Piano",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "c",
+                    "text": "Violin",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "d",
+                    "text": "Drums",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                }
+            ]
+        },
+        {
+            "id": 75,
+            "question": "You're inspired to start a blog. What's your focus?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Travel",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "Food",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "c",
+                    "text": "Technology",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "d",
+                    "text": "Lifestyle",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                }
+            ]
+        },
+        {
+            "id": 76,
+            "question": "You decide to improve your sleep habits. What change do you make?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Establish a bedtime routine",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Limit screen time before bed",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Invest in a better mattress",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "d",
+                    "text": "Use relaxation techniques",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                }
+            ]
+        },
+        {
+            "id": 77,
+            "question": "You're interested in renewable energy. How do you get involved?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Install solar panels",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "b",
+                    "text": "Advocate for policy change",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Invest in green companies",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "d",
+                    "text": "Educate others",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 78,
+            "question": "You want to improve your cooking skills. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Take a cooking class",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Try new recipes",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "c",
+                    "text": "Watch cooking shows",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Cook with friends",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                }
+            ]
+        },
+        {
+            "id": 79,
+            "question": "You're considering getting a part-time job. Why?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Extra income",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Explore a new field",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Meet new people",
+                    "color": "cyan",
+                    "life_category": "Social Life"
+                },
+                {
+                    "label": "d",
+                    "text": "Fill free time",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                }
+            ]
+        },
+        {
+            "id": 80,
+            "question": "You decide to create a personal website. What's its purpose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Professional portfolio",
+                    "color": "blue",
+                    "life_category": "Career"
+                },
+                {
+                    "label": "b",
+                    "text": "Blogging platform",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Online resume",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Share hobbies",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                }
+            ]
+        },
+        {
+            "id": 81,
+            "question": "You find an old hobby you used to love. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Pick it up again",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "b",
+                    "text": "Teach it to others",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Combine it with a new hobby",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Reflect on past interests",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 82,
+            "question": "You feel the urge to declutter digital files. Where do you start?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Email inbox",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Photos",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Documents",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Apps and software",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 83,
+            "question": "You decide to create a personal budget. What method do you use?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Spreadsheet",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Budgeting app",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Envelope system",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Hire a financial planner",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                }
+            ]
+        },
+        {
+            "id": 84,
+            "question": "You're interested in sustainable fashion. How do you participate?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Buy second-hand",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "b",
+                    "text": "Support ethical brands",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Upcycle clothing",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Reduce purchases",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 85,
+            "question": "You want to improve your mental health. What step do you take?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Mindfulness practices",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "b",
+                    "text": "Therapy",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "c",
+                    "text": "Journaling",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Connect with loved ones",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                }
+            ]
+        },
+        {
+            "id": 86,
+            "question": "You decide to explore your city more. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Visit landmarks",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Try local restaurants",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "c",
+                    "text": "Attend community events",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Join local tours",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                }
+            ]
+        },
+        {
+            "id": 87,
+            "question": "You want to support local businesses. How do you contribute?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Shop at local stores",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "b",
+                    "text": "Promote them online",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "c",
+                    "text": "Attend local markets",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Provide feedback",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 88,
+            "question": "You're considering adopting a plant. Which do you choose?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Succulent",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "b",
+                    "text": "Fern",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "c",
+                    "text": "Flowering plant",
+                    "color": "bright_yellow",
+                    "life_category": "Hobbies"
+                },
+                {
+                    "label": "d",
+                    "text": "Herb",
+                    "color": "green",
+                    "life_category": "Environment"
+                }
+            ]
+        },
+        {
+            "id": 89,
+            "question": "You feel like exploring spirituality. What path do you take?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Meditation",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "b",
+                    "text": "Religious study",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "c",
+                    "text": "Yoga",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "d",
+                    "text": "Philosophical readings",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 90,
+            "question": "You decide to document your life. How do you do it?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Daily journal",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Video diaries",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Photo albums",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Blogging",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 91,
+            "question": "You're inspired to give back to your alma mater. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Donate funds",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "b",
+                    "text": "Mentor students",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Attend alumni events",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "d",
+                    "text": "Offer internships",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 92,
+            "question": "You want to make your mornings more productive. What change do you make?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Wake up earlier",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Plan the night before",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Exercise in the morning",
+                    "color": "bright_magenta",
+                    "life_category": "Health"
+                },
+                {
+                    "label": "d",
+                    "text": "Limit distractions",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 93,
+            "question": "You consider downsizing your living space. Why?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Simplify life",
+                    "color": "magenta",
+                    "life_category": "Personal Growth"
+                },
+                {
+                    "label": "b",
+                    "text": "Save money",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Environmental reasons",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "d",
+                    "text": "Travel more",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                }
+            ]
+        },
+        {
+            "id": 94,
+            "question": "You're interested in learning about wine. How do you start?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Wine tasting events",
+                    "color": "yellow",
+                    "life_category": "Leisure"
+                },
+                {
+                    "label": "b",
+                    "text": "Enroll in a course",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Read books on wine",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Visit vineyards",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 95,
+            "question": "You decide to challenge yourself intellectually. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Learn a new language",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Take advanced courses",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Join debates",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Solve puzzles regularly",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 96,
+            "question": "You want to improve your handwriting. What's your approach?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Practice calligraphy",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "b",
+                    "text": "Write by hand more often",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "c",
+                    "text": "Use handwriting guides",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Attend a workshop",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 97,
+            "question": "You're considering fostering animals. What do you do?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Apply to be a foster",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                },
+                {
+                    "label": "b",
+                    "text": "Volunteer at shelters",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "c",
+                    "text": "Donate supplies",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "d",
+                    "text": "Adopt instead",
+                    "color": "bright_red",
+                    "life_category": "Family"
+                }
+            ]
+        },
+        {
+            "id": 98,
+            "question": "You want to be more eco-friendly at home. What change do you make?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Compost waste",
+                    "color": "green",
+                    "life_category": "Environment"
+                },
+                {
+                    "label": "b",
+                    "text": "Use energy-efficient appliances",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "c",
+                    "text": "Collect rainwater",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                },
+                {
+                    "label": "d",
+                    "text": "Switch to LED lighting",
+                    "color": "bright_green",
+                    "life_category": "Finance"
+                }
+            ]
+        },
+        {
+            "id": 99,
+            "question": "You decide to improve your networking skills. How do you proceed?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "Attend events",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "b",
+                    "text": "Join professional groups",
+                    "color": "bright_cyan",
+                    "life_category": "Community"
+                },
+                {
+                    "label": "c",
+                    "text": "Enhance online presence",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                },
+                {
+                    "label": "d",
+                    "text": "Seek mentorship",
+                    "color": "bright_blue",
+                    "life_category": "Education"
+                }
+            ]
+        },
+        {
+            "id": 100,
+            "question": "You consider taking a digital detox. How long do you plan?",
+            "choices": [
+                {
+                    "label": "a",
+                    "text": "One day",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "b",
+                    "text": "One week",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "c",
+                    "text": "One month",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                },
+                {
+                    "label": "d",
+                    "text": "Indefinitely",
+                    "color": "white",
+                    "life_category": "Spirituality"
+                }
+            ]
+        }
+    ]
+}
