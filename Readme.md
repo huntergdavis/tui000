@@ -34,7 +34,7 @@ Building with Docker:
 sudo docker build -t tui000 .
 
 Running with Docker:
-sudo docker build -t tui000 .
+docker run -d --name tui000-container tui000
 
 
 Main Graveyard Screen -> 
