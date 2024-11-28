@@ -16,42 +16,24 @@ class Character:
 
     def generate_headshot_and_bio(self) -> None:
         """Generate the headshot and bio and store it in self.headshot_text."""
-        face_size = 18  # Size of the headshot
+        face_size = 18  # Size of the headshot grid
 
         # Initialize the grid with empty spaces
-        headshot = [[" " for _ in range(face_size)] for _ in range(face_size)]
+        self.grid = [[" " for _ in range(face_size)] for _ in range(face_size)]
 
-        # Randomly decide if we're using a background color or an outline
-        use_background = random.choice([True, False])
-
-        if not use_background:
-            self.add_outline(headshot, face_size)  # Add outline if no background is used
-
-        # Generate hairstyles and place them in the grid
-        hairstyle_char, hairstyle_color = self.generate_hairstyles(headshot, face_size)
-
-        # Generate eyebrows and place them in the grid
-        eyebrows_char, eyebrows_color = self.generate_eyebrows(headshot, face_size)
-
-        # Generate facial features and place them in the grid
-        (eye_char, eye_color, nose_char, nose_color, mouth_chars, mouth_color,
-         face_fill_char, face_color) = self.generate_facial_features(headshot, face_size)
-
-        # Optionally use a background color
-        bg_color = random.choice(
-            ["on_black", "on_white", "on_grey19", "on_cornsilk1", "on_dark_blue"]
-        ) if use_background else ""
-
-        # Fill the face with the background pattern
-        self.fill_face(headshot, face_fill_char, face_size)
+        # Generate facial components
+        self.generate_face_shape()
+        self.generate_hairstyle()
+        self.generate_eyes()
+        self.generate_eyebrows()
+        self.generate_nose()
+        self.generate_mouth()
+        self.generate_ears()
+        self.generate_facial_hair()  # Optional facial hair
+        self.generate_accessories()  # Glasses, earrings, piercings
 
         # Convert the grid to rich text with coloring
-        self.headshot_text = self.grid_to_rich_text(
-            headshot, face_size, eye_char, eye_color, nose_char, nose_color,
-            mouth_chars, mouth_color, face_fill_char, face_color,
-            hairstyle_char, hairstyle_color, eyebrows_char, eyebrows_color,
-            bg_color
-        )
+        self.headshot_text = self.grid_to_rich_text()
 
         # Cache the headshot without bio by making a deep copy
         self.headshot_text_cache = self.headshot_text.copy()
@@ -59,199 +41,245 @@ class Character:
         # Append bio information below the face
         self.generate_bio(self.headshot_text)
 
-    def add_outline(self, grid: list, face_size: int) -> None:
-        """Add an outline around the face."""
-        for i in range(face_size):
-            grid[i][0] = "|"
-            grid[i][face_size - 1] = "|"
-        for j in range(face_size):
-            grid[0][j] = "-"
-            grid[face_size - 1][j] = "-"
+    def generate_face_shape(self):
+        """Define the face shape in the grid."""
+        face_char = "░"  # Light shade block for skin
+        face_color = random.choice(["light_yellow", "light_salmon1", "wheat1", "navajo_white1", "bisque1"])
+        self.face_color = face_color
 
-    def generate_facial_features(self, grid: list, face_size: int) -> tuple:
-        """
-        Generate and place facial features on the grid.
+        # Define face boundaries (ellipse shape)
+        for row in range(4, 14):
+            for col in range(5, 13):
+                if (row - 9) ** 2 + (col - 9) ** 2 <= 16:  # Circle equation
+                    self.grid[row][col] = face_char
 
-        Returns:
-            A tuple containing characters and their corresponding colors for eyes, nose, mouth,
-            face fill, and face color.
-        """
-        colors = ["cyan", "light_blue", "green", "magenta", "yellow", "light_green"]
-
-        # Characters to represent different parts of the face
-        eyes = ["O", "@", "*", "o"]
-        mouth_styles = {
-            'smile': [
-                "  \\_____/  ",
-                "         ",
-                "         "
-            ],
-            'frown': [
-                "  /___\\  ",
-                "         ",
-                "         "
-            ],
-            'neutral': [
-                "  --------  ",
-                "         ",
-                "         "
-            ],
-            'grin': [
-                " :D___D: ",
-                "         ",
-                "         "
-            ],
-            'angry': [
-                " >___<  ",
-                "         ",
-                "         "
-            ]
-        }
-
-        nose = ["|", "^", "v"]
-        face_fill = [".", " "]
-
-        # Generate random features
-        eye_char = random.choice(eyes)
-        eye_color = random.choice(colors)
-        nose_char = random.choice(nose)
-        nose_color = random.choice(colors)
-        mouth_style = random.choice(list(mouth_styles.keys()))
-        mouth_lines = mouth_styles[mouth_style]
-        mouth_chars = set(char for line in mouth_lines for char in line if char.strip())
-        mouth_color = random.choice(colors)
-        face_fill_char = random.choice(face_fill)
-        face_color = random.choice(colors)
-
-        # Place eyes and nose in the grid
-        grid[4][5] = eye_char
-        grid[4][12] = eye_char
-        grid[9][8] = nose_char
-        grid[9][9] = nose_char
-
-        # Place mouth in the grid (multi-line, shifted left)
-        # mouth start col should be random between 4 n 5
-        mouth_start_col = random.randint(4, 5)
-        mouth_start_row = 13
-        for row_offset, line in enumerate(mouth_lines):
-            row = mouth_start_row + row_offset
-            for col_offset, char in enumerate(line):
-                grid[row][mouth_start_col + col_offset] = char
-
-        return (eye_char, eye_color, nose_char, nose_color,
-                list(mouth_chars), mouth_color, face_fill_char, face_color)
-
-    def generate_eyebrows(self, grid: list, face_size: int) -> tuple:
-        """
-        Generate and place eyebrows on the grid.
-
-        Returns:
-            A tuple containing the eyebrows characters and their corresponding color.
-        """
-        eyebrow_styles = ["///", "^^^", "---", "~~~", "***"]
-        eyebrow_char = random.choice(eyebrow_styles)
-        eyebrow_color = random.choice(["brown", "black", "grey", "dark_blue", "dark_green"])
-
-        # Place left eyebrow
-        for idx, char in enumerate(eyebrow_char):
-            grid[3][4 + idx] = char
-
-        # Place right eyebrow
-        for idx, char in enumerate(eyebrow_char):
-            grid[3][11 + idx] = char
-
-        return (eyebrow_char, eyebrow_color)  # Representative characters for styling
-
-    def generate_hairstyles(self, grid: list, face_size: int) -> tuple:
-        """
-        Generate and place hairstyles on the grid.
-
-        Returns:
-            A tuple containing the hairstyle character and its corresponding color.
-        """
+    def generate_hairstyle(self):
+        """Generate and place the hairstyle on the grid."""
         hairstyles = [
-            {"style": "short", "chars": ["^", "^", "^"], "color": "yellow"},
-            {"style": "long", "chars": ["~", "~", "~"], "color": "brown"},
-            {"style": "curly", "chars": ["@", "@", "@"], "color": "orange"},
-            {"style": "ponytail", "chars": ["V", "V", "V"], "color": "red"},
-            {"style": "spiky", "chars": ["*", "*", "*"], "color": "light_magenta"}
+            {"style": "short", "pattern": [" ██████ ", "████████"], "offset": -2},
+            {"style": "medium", "pattern": ["  ████  ", " ██████ ", "████████"], "offset": -3},
+            {"style": "long", "pattern": ["   ██   ", "  ████  ", " ██████ ", "████████"], "offset": -4},
+            {"style": "curly", "pattern": ["  @@@@  ", " @@@@@@ ", "@@@@@@@@"], "offset": -3},
+            {"style": "afro", "pattern": ["  ▓▓▓▓  ", " ▓▓▓▓▓▓ ", "▓▓▓▓▓▓▓▓"], "offset": -3},
+            {"style": "bald", "pattern": [], "offset": 0}
         ]
-
         selected_hairstyle = random.choice(hairstyles)
-        hairstyle_chars = selected_hairstyle["chars"]
-        hairstyle_color = selected_hairstyle["color"]
+        hair_pattern = selected_hairstyle["pattern"]
+        hair_offset = selected_hairstyle["offset"]
+        hair_colors = ["brown", "dark_red", "yellow", "grey69", "black", "light_blue", "purple", "green"]
+        hair_color = random.choice(hair_colors)
+        self.hair_color = hair_color
 
-        # Define the starting row for hairstyles
-        hairstyle_start_row = 1
+        start_row = 4 + hair_offset
+        for i, line in enumerate(hair_pattern):
+            row = start_row + i
+            for j, char in enumerate(line):
+                col = 5 + j
+                if char != " ":
+                    self.grid[row][col] = char
 
-        for row_offset, char in enumerate(hairstyle_chars):
-            row = hairstyle_start_row + row_offset
-            for col in range(face_size):
-                # Randomly decide whether to place a hair character or leave it empty
-                if random.choice([True, False, False]):  # Adjust probability as needed
-                    grid[row][col] = char
+    def generate_eyes(self):
+        """Generate and place the eyes on the grid."""
+        eye_styles = [
+            {"chars": ["●", "●"], "offset": 0},
+            {"chars": ["◕", "◕"], "offset": 0},
+            {"chars": ["⊙", "⊙"], "offset": 0},
+            {"chars": ["^", "^"], "offset": -1},  # Closed eyes
+            {"chars": ["*", "*"], "offset": 0}    # Starry eyes
+        ]
+        selected_eyes = random.choice(eye_styles)
+        eye_chars = selected_eyes["chars"]
+        eye_offset = selected_eyes["offset"]
+        eye_colors = ["blue", "green", "brown", "dark_slate_gray1", "gold1", "violet"]
+        eye_color = random.choice(eye_colors)
+        self.eye_chars = eye_chars
+        self.eye_color = eye_color
 
-        # For styling purposes, use the first character as representative
-        hairstyle_char = hairstyle_chars[0]
+        # Left eye
+        self.grid[8 + eye_offset][7] = eye_chars[0]
+        # Right eye
+        self.grid[8 + eye_offset][10] = eye_chars[1]
 
-        return hairstyle_char, hairstyle_color
+    def generate_eyebrows(self):
+        """Generate and place the eyebrows on the grid."""
+        eyebrow_styles = ["▄", "▀", "―", "╌", "︶", "︵", "⌒", "︻", "︼"]
+        eyebrow_char = random.choice(eyebrow_styles)
+        eyebrow_offset = random.choice([-1, 0])
+        eyebrow_color = self.hair_color  # Eyebrows match hair color
 
-    def fill_face(self, grid: list, face_fill_char: str, face_size: int) -> None:
-        """Fill the empty spaces in the face with the face_fill_char."""
-        for i in range(face_size):
-            for j in range(face_size):
-                if grid[i][j] == " ":
-                    grid[i][j] = face_fill_char
+        # Left eyebrow
+        self.grid[7 + eyebrow_offset][7] = eyebrow_char
+        # Right eyebrow
+        self.grid[7 + eyebrow_offset][10] = eyebrow_char
 
-    def grid_to_rich_text(self, grid: list, face_size: int, eye_char: str, eye_color: str,
-                          nose_char: str, nose_color: str, mouth_chars: list,
-                          mouth_color: str, face_fill_char: str, face_color: str,
-                          hairstyle_char: str, hairstyle_color: str,
-                          eyebrows_char: str, eyebrows_color: str,
-                          bg_color: str) -> Text:
+    def generate_nose(self):
+        """Generate and place the nose on the grid."""
+        nose_char = random.choice(["▼", "▾", "∇", "ˇ", "Ƹ", "|", "ʌ"])
+        nose_color = self.face_color  # Nose matches face color
+
+        self.grid[9][8] = nose_char
+        self.nose_char = nose_char
+        self.nose_color = nose_color
+
+    def generate_mouth(self):
+        """Generate and place the mouth on the grid."""
+        mouth_styles = {
+            'smile': ["  ᴖᴖᴖ  "],
+            'frown': ["  ᴗᴗᴗ  "],
+            'neutral': ["  ───  "],
+            'grin': ["  ᕮᕭ  "],
+            'surprised': ["   o   "],
+            'tongue_out': ["  ᵔᵕᵔ  "],
+            'smirk': ["  ◡︵◡ "],
+            'kiss': ["   ۳   "],
+            'sad': ["  ︵︵︵ "]
+        }
+        selected_mouth = random.choice(list(mouth_styles.keys()))
+        mouth_pattern = mouth_styles[selected_mouth]
+        mouth_color = "red3"
+
+        start_row = 11
+        for i, line in enumerate(mouth_pattern):
+            row = start_row + i
+            for j, char in enumerate(line):
+                col = 5 + j
+                if char != " ":
+                    self.grid[row][col] = char
+
+        self.mouth_chars = set(char for line in mouth_pattern for char in line if char.strip())
+        self.mouth_color = mouth_color
+
+    def generate_ears(self):
+        """Generate and place the ears on the grid."""
+        ear_char = random.choice(["(", "<", "[", "{", "ʢ"])
+        ear_color = self.face_color  # Ears match face color
+
+        # Left ear
+        self.grid[9][5] = ear_char
+        # Right ear
+        right_ear = ear_char[::-1] if ear_char != "ʢ" else "ʡ"
+        self.grid[9][12] = right_ear
+
+    def generate_facial_hair(self):
+        """Generate and place optional facial hair on the grid."""
+        facial_hair_styles = [
+            {"style": "mustache", "pattern": ["  ̴̴̴  "], "offset": 10},
+            {"style": "beard", "pattern": [" ██████ "], "offset": 12},
+            {"style": "goatee", "pattern": ["   █   "], "offset": 12},
+            {"style": "soul_patch", "pattern": ["   ░   "], "offset": 12},
+            {"style": "full_beard", "pattern": [" ██████ ", "████████"], "offset": 12},
+            {"style": "none", "pattern": [], "offset": 0}
+        ]
+        selected_style = random.choice(facial_hair_styles)
+        facial_hair_pattern = selected_style["pattern"]
+        hair_offset = selected_style["offset"]
+        facial_hair_color = self.hair_color
+
+        start_row = hair_offset
+        for i, line in enumerate(facial_hair_pattern):
+            row = start_row + i
+            for j, char in enumerate(line):
+                col = 5 + j
+                if char != " ":
+                    self.grid[row][col] = char
+
+        self.facial_hair_chars = set(char for line in facial_hair_pattern for char in line if char.strip())
+        self.facial_hair_color = facial_hair_color
+
+    def generate_accessories(self):
+        """Generate and place optional accessories on the grid."""
+        # Glasses
+        if random.choice([True, False]):
+            glasses_styles = ["-○-○-", "=○=○=", "◐─◑", "⌐■-■", "ʘ‿ʘ"]
+            glasses_char = random.choice(glasses_styles)
+            glasses_color = "grey70"
+
+            # Determine the starting column to center the glasses
+            glasses_length = len(glasses_char)
+            start_col = 9 - glasses_length // 2  # Center the glasses
+
+            # Place the glasses on the grid
+            for idx, char in enumerate(glasses_char):
+                col = start_col + idx
+                self.grid[8][col] = char
+
+            self.glasses_chars = set(glasses_char)
+            self.glasses_color = glasses_color
+        else:
+            self.glasses_chars = set()
+            self.glasses_color = None
+
+        # Earrings
+        if random.choice([True, False]):
+            earring_char = random.choice(["•", "✧", "✦"])
+            earring_color = "gold1"
+
+            # Left earring
+            self.grid[10][5] = earring_char
+            # Right earring
+            self.grid[10][12] = earring_char
+
+            self.earring_chars = {earring_char}
+            self.earring_color = earring_color
+        else:
+            self.earring_chars = set()
+            self.earring_color = None
+
+        # Nose Piercing
+        if random.choice([True, False]):
+            piercing_char = random.choice(["¤", "•"])
+            piercing_color = "silver"
+
+            self.grid[9][9] = piercing_char  # Place on the nose
+
+            self.piercing_chars = {piercing_char}
+            self.piercing_color = piercing_color
+        else:
+            self.piercing_chars = set()
+            self.piercing_color = None
+
+    def grid_to_rich_text(self) -> Text:
         """
         Convert the grid to a Rich Text object with appropriate styling.
-
-        Args:
-            grid (list): The headshot grid.
-            face_size (int): Size of the face grid.
-            eye_char (str): Character representing the eyes.
-            eye_color (str): Color for the eyes.
-            nose_char (str): Character representing the nose.
-            nose_color (str): Color for the nose.
-            mouth_chars (list): Characters representing the mouth.
-            mouth_color (str): Color for the mouth.
-            face_fill_char (str): Character used to fill the face.
-            face_color (str): Color for the face fill.
-            hairstyle_char (str): Character representing the hairstyle.
-            hairstyle_color (str): Color for the hairstyle.
-            eyebrows_char (str): String representing the eyebrow characters.
-            eyebrows_color (str): Color for the eyebrows.
-            bg_color (str): Background color.
 
         Returns:
             Text: A Rich Text object representing the styled headshot.
         """
         face_text = Text()
-        for i in range(face_size):
-            for j in range(face_size):
-                char = grid[i][j]
-                if char == eye_char:
-                    face_text.append(char, style=f"{eye_color} {bg_color}")
-                elif char == nose_char:
-                    face_text.append(char, style=f"{nose_color} {bg_color}")
-                elif char in mouth_chars:
-                    face_text.append(char, style=f"{mouth_color} {bg_color}")
-                elif char in eyebrows_char:
-                    face_text.append(char, style=f"{eyebrows_color} {bg_color}")
-                elif char == hairstyle_char:
-                    face_text.append(char, style=f"{hairstyle_color} {bg_color}")
-                elif char in ["-", "|"]:  # Border chars
-                    face_text.append(char, style="grey58")  # Outline in a neutral color
-                else:
-                    face_text.append(char, style=f"{face_color} {bg_color}")
+        # Only include the relevant rows to eliminate blank space
+        start_row = next((i for i, row in enumerate(self.grid) if any(char != " " for char in row)), 0)
+        end_row = next((i for i in range(len(self.grid) - 1, -1, -1) if any(char != " " for char in self.grid[i])), len(self.grid) - 1) + 1
+        for row in self.grid[start_row:end_row]:
+            for char in row:
+                style = self.get_style_for_char(char)
+                face_text.append(char, style=style)
             face_text.append("\n")
         return face_text
+
+    def get_style_for_char(self, char: str) -> str:
+        """Get the style for a given character."""
+        if char == "░":  # Face skin
+            return self.face_color
+        elif char in self.eye_chars:
+            return self.eye_color
+        elif char == self.nose_char or char in self.piercing_chars:
+            return self.nose_color if char == self.nose_char else self.piercing_color
+        elif char in self.mouth_chars:
+            return self.mouth_color
+        elif char in ["▄", "▀", "―", "╌", "︶", "︵", "⌒", "︻", "︼"]:  # Eyebrows
+            return self.hair_color
+        elif char in ["█", "■", "◆", "@", "▓"]:  # Hair
+            return self.hair_color
+        elif char in ["(", ")", "<", ">", "[", "]", "{", "}", "ʢ", "ʡ"]:  # Ears
+            return self.face_color
+        elif char in self.facial_hair_chars:
+            return self.facial_hair_color
+        elif self.glasses_color and char in self.glasses_chars:
+            return self.glasses_color
+        elif self.earring_color and char in self.earring_chars:
+            return self.earring_color
+        else:
+            return "black"  # Background
 
     def center_text(self, text: str, width: int = 18) -> str:
         """Center the given text within the specified width."""
