@@ -1,3 +1,9 @@
+## ▶️ Play it in your browser — no install
+
+**[▶ Launch tui000 live](https://hunterdavis.com/webtui/?app=huntergdavis/tui000)** — runs entirely client-side in a real Linux terminal via [webtui](https://github.com/huntergdavis/webtui) (Textual is bundled, so no Tailscale needed). Click the link, wait for the VM to boot, press **Run** — the first launch takes a minute or two while it warms up, then it's fast.
+
+---
+
 This is a Readme for a Terminal Screen Saver called 3000 (tui000).
 
 History:
